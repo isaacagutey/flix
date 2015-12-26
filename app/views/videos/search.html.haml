@@ -1,0 +1,8 @@
+.videos.row
+  - if @search_videos.empty?
+    %p Sorry no result found
+  - else
+    - @search_videos.each do |video|
+      .video.col-sm-2
+        = link_to video_path(video) do
+          %img(src="#{video.image_url["small_img"]}")

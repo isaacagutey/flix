@@ -1,0 +1,5 @@
+= bootstrap_form_tag url: '/sign_in', control_col: "col-sm-3", method: 'POST' do |f| 
+  = f.email_field :email, placeholder: 'Enter email' 
+  = f.password_field :password, placeholder: 'Enter password'
+  = f.submit 'login'
+ 
