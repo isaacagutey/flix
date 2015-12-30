@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_back
+    redirect_to home_path if logged_in?
+  end
+
 end

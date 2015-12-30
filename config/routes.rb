@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   # get '/search', to: 'videos#search'
 
   resources :videos, only: [:show] do
+    resources :reviews
     collection do
-      get :search
+      post :search
     end
   end
   resources :categories, only: [:show]

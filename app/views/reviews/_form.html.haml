@@ -1,0 +1,7 @@
+= form_for [@video, @review], remote: :true do |f|
+  = f.label :ratings
+  = f.select(:rating) do 
+    - [['1 star', 1], ['2 stars', 2], ['3 stars', 3], ['4 stars', 4], ['5 stars', 5]].each do |c| 
+      = content_tag(:option, c.first, value: c.last) 
+  = f.text_area :review, placeholder: "Enter review here"
+  = f.submit "Submit review"

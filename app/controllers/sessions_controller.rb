@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :redirect_back, only: [:new]
+
   def new
   end
 

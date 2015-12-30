@@ -1,14 +1,16 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show]
-  before_action :authenticate_user, only: [:index]
+  before_action :authenticate_user, only: [:index, :show, :search]
  
-
   def index
     @videos = Video.all
     @categories = Category.all.reverse
   end
 
   def show
+    # words = @video.description.scan(/.{1,100}/)
+    # @paginate = Kaminari.paginate_array(words).page(1).per(3)
+     @review = Review.new
   end
 
   def search
