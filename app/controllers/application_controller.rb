@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def authenticate_user
+  def require_user
     unless current_user
       redirect_to root_path
       flash[:error] = "You must login first"

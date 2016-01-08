@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
   has_many :video_categories
   has_many :categories, through: :video_categories
   has_many :reviews
+  has_many :queue_items
   validates_presence_of :title, :description
 
   before_save :generate_slug

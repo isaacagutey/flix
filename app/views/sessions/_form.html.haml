@@ -1,0 +1,4 @@
+= bootstrap_form_tag url: '/sign_in', layout: :inline, method: 'POST' do |f| 
+  = f.email_field :email, placeholder: 'Enter email', class: 'email', required: :true
+  = f.password_field :password, placeholder: 'Enter password', class: 'password', required: :true
+  = f.submit 'login', class:"btn btn-default login"

@@ -1,0 +1,6 @@
+- if object != nil && object.errors.any?
+  %ul.alert.alert-danger
+    %a.close(data-dismiss='alert') &#215;
+    - object.errors.full_messages.each do |msg| 
+      %li
+        = msg 

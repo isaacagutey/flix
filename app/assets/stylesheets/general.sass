@@ -1,13 +1,69 @@
-body
-  margin: 20px
+body, html
+  margin: 0
+  padding: 0
   background-color: #E1E1E1
   a
     color: #AE1D00
   section.content
     padding-bottom: 50px
-    border-bottom: 3px solid #B9090B
     margin-bottom: 20px
+    background: none
 
+
+body.front_page
+  .errors
+    position: absolute
+    z-index: 999
+  @media screen and (min-height: 500px)
+    overflow: hidden
+  .logo
+    position: absolute
+    top: -15px
+    left: 5px 
+    img.logo-icon
+      margin: 10px
+      margin-top: 25px
+      margin-right: 0px
+    span
+      margin-left: -23px
+      margin-top: -10px
+      font-size: 2.5em
+      color: white
+      font-weight: bold
+  .background_image
+    background-image: url('large_screen1.png')
+    transition: all 1s ease
+    -moz-transition: all 1s ease
+    -ms-transition: all 1s ease
+    -webkit-transition: all 1s ease
+    -o-transition: all 1s ease
+    background-repeat: no-repeat
+    background-size: 90% 100%
+    min-height: 600px
+    position: absolute
+    width: 100%
+    overflow: hidden
+    // -webkit-animation-name: example /* Chrome, Safari, Opera */
+    // -webkit-animation-duration: 500s /* Chrome, Safari, Opera */
+    // -webkit-animation-iteration-count: infinite
+    // -webkit-animation-direction: alternate
+    // animation-name: example
+    // animation-duration: 500s
+    // animation-iteration-count: infinite
+    // animation-direction: alternate
+    &:hover
+      // transform: scale(1.4)
+      // -moz-transform: scale(1.4)
+      // -webkit-transform: scale(1.4)
+      // -o-transform: scale(1.4)
+      // -ms-transform: scale(1.4) /* IE 9 */
+      // -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')"
+  @media screen and (max-width: 991px)
+    hr 
+      margin-top: 90px
+  h3.footer_text
+    color: #B9090B
+    text-align: center
 section.ui-index
   background: #f7f7f7
   padding: 30px
@@ -15,3 +71,64 @@ section.ui-index
 fieldset.actions
   input[type="submit"]
     margin-right: 10px
+
+section.site_title
+  background: none
+
+section.content.clearfix
+  background: none
+  z-index: -999
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example 
+  0%   
+    background-image: url('large_screen1.png')
+  10%  
+    background-image: url('large_screen2.png')
+  20%  
+    background-image: url('large_screen3.png')
+  30%  
+    background-image: url('large_screen4.png')
+  40% 
+    background-image: url('large_screen5.png')
+  50%  
+    background-image: url('large_screen6.png')
+  60%  
+    background-image: url('large_screen7.png')
+  70% 
+    background-image: url('large_screen8.png')
+  80%  
+    background-image: url('large_screen9.png')
+  90%  
+    background-image: url('large_screen10.png')
+  100% 
+    background-image: url('large_screen11.png')
+  
+
+/* Standard syntax */
+@keyframes example 
+  0%   
+    background-image: url('large_screen1.png')
+  10%  
+    background-image: url('large_screen2.png')
+  20%  
+    background-image: url('large_screen3.png')
+  30%  
+    background-image: url('large_screen4.png')
+  40% 
+    background-image: url('large_screen5.png')
+  50%  
+    background-image: url('large_screen6.png')
+  60%  
+    background-image: url('large_screen7.png')
+  70% 
+    background-image: url('large_screen8.png')
+  80%  
+    background-image: url('large_screen9.png')
+  90%  
+    background-image: url('large_screen10.png')
+  100% 
+    background-image: url('large_screen11.png')
+
+

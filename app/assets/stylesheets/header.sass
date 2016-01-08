@@ -1,9 +1,9 @@
 section#top-header
-  background: #B9090B
+  background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%) /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%) /* Chrome10-25,Safari5.1-6 */
   margin: 0
   margin-bottom: 20px
-  padding: 12px 0
-  border-radius: 5px
+  // padding: 5px 0
   a
     color: white
   h1
@@ -42,3 +42,47 @@ section#top-header
             a
               color: black
               margin: 0
+
+input.search_submit
+  display: none
+
+.c-ripple 
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  background: transparent
+
+
+.c-ripple__circle 
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  opacity: 0
+  width: 0
+  height: 0
+  border-radius: 50%
+  background: rgba(255, 255, 255, .25)
+  .c-ripple.is-active & 
+    animation: a-ripple .4s ease-in
+  
+
+
+/**
+ * Animation: Ripple
+ * --------------------------------------------------
+ */
+
+@keyframes a-ripple 
+  0% 
+    opacity: 0
+  25% 
+    opacity: 1  
+  100% 
+    width: 200%
+    padding-bottom: 200%
+    opacity: 0
+  

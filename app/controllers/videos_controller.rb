@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show]
-  before_action :authenticate_user, only: [:index, :show, :search]
+  before_action :require_user, only: [:index, :show, :search]
  
   def index
     @videos = Video.all

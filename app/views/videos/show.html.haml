@@ -12,7 +12,7 @@
           = @video.description
         .actions
           %a.btn.btn-primary(href="") Watch Now
-          %a.btn.btn-default(href="") + My Queue
+          = link_to "+ My Queue", add_queue_item_path(video_id: @video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(@video)
 
 %section.reviews.container
   .row
@@ -26,7 +26,9 @@
             %li.row
               .col-sm-2
                 %span=  "Rating: #{review.rating} / 5"
-                %p by <a href="">#{review.user.full_name} </a>
+                %p 
+                  by
+                  = link_to review.user.full_name, review.user
               .col-sm-8
                 %p= review.review
-                %p= link_to 'delete', [@video, review], method: :delete
+                %p= link_to 'delete', [@video, review], method: :delete if review.user == current_user

@@ -1,8 +1,44 @@
-%section.site_title
-  %h1
-    Unlimited Movies for Only 9.99 a Month.
-    = link_to "Sign Up Now!", register_path
-  %p.sign_up
-  %p.sign_in
-    Have an account? Please
-    = link_to "Sign In", sign_in_path
+.errors
+  = render 'shared/errors', object:  @user
+.background_image
+.logo
+  = image_tag "plsma.png", width: "50", height:"50", class:"logo-icon"
+  %span ma
+
+.sign_in.hidden-sm.hidden-xs
+  .row
+    = render "sessions/form"
+
+.sign_up
+  .row
+    .col-md-4.col-md-offset-7.signup-form
+      .mobile_sign_up.display_none
+        %h1 Sign Up
+        = render "users/form"
+      .mobile_login.hidden-md.hidden-lg
+        %h1 Sign In
+        = bootstrap_form_tag url: '/sign_in', method: 'POST' do |f| 
+          = f.email_field :email, placeholder: 'Enter email', class: "email", required: :true 
+          = f.password_field :password, placeholder: 'Enter password', class: "password", required: :true
+          = f.submit 'login', class:"btn btn-default login"
+        %br
+        %p
+          %a Not a member? Sign up.
+
+
+:javascript
+  $('.mobile_login p a').on('click', function(event) {
+    $('.mobile_login').addClass('display_none');
+    $('.mobile_sign_up').removeClass('display_none')
+  });
+
+  $('.mobile_sign_up p a').on('click', function(){
+    $('.mobile_sign_up').addClass('display_none')
+    $('.mobile_login').removeClass('display_none')
+  });
+
+
+
+
+
+

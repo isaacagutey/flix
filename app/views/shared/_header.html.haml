@@ -1,31 +1,97 @@
-%section#top-header.row
-  %h1.col-md-2
-    = link_to "MyFLiX", home_path
-  - if logged_in?
-    %ul.col-md-4.clearfix
-      %li= link_to "Videos"
-      %li= link_to "My Queue"
-      %li= link_to "People"
+/ %section#top-header.row
+/   %h1.col-md-2
+/     = link_to home_path do
+/       %img(src="http://img3.wikia.nocookie.net/__cb20110304223128/logopedia/images/b/b7/Cbc-logo.png" height="50" width="50")
+/   - if logged_in?
+/     %ul.col-md-4.clearfix
+/       %li= link_to "Videos"
+/       %li= link_to "My Queue", queue_items_path
+/       %li= link_to "People", people_path
 
-    .col-md-5.navbar-form
-      = form_tag(search_videos_path, method: "post") do
-        .form-group
-          = text_field_tag(:q)
-          = submit_tag("Search")
+/     .col-md-5.navbar-form
+/       = form_tag(search_videos_path, method: "post") do
+/         .form-group
+/           = text_field_tag(:q)
+/           = submit_tag("Search")
 
-  / %form.col-md-5.navbar-form(action="")
-  /   .form-group
-  /     %input.form-control(type="text" placeholder="Search for videos here")
-  /   %button.btn.btn-default(type="submit") Search
-- if logged_in?
-  #user_links.pull-right
-    %ul
-      %li.dropdown
+/   / %form.col-md-5.navbar-form(action="")
+/   /   .form-group
+/   /     %input.form-control(type="text" placeholder="Search for videos here")
+/   /   %button.btn.btn-default(type="submit") Search
+/   - if logged_in?
+/     #user_links.pull-right
+/       %ul
+/         %li.dropdown
+/           %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
+/             welcome, #{current_user.full_name}
+/             %b.caret
+/           %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+/             %li
+/               %a(href="#") Account
+/               %a(href="#") Plan and Billing
+/               = link_to 'Sign Out', sign_out_path
+
+%header.cd-main-header
+  %a(href="#0" class="cd-logo")
+    = image_tag "likeme.svg", alt:"Logo", height:"50", width:"50"
+
+  
+  .cd-search.c-ripple.js-ripple 
+    = form_tag(search_videos_path, method: "post") do
+      %input(id="q" name="q" type="text" placeholder="Search...")
+      = submit_tag("Search", class:"search_submit")
+      .c-ripple__circle
+
+  %a.cd-nav-trigger{:href => "#0"}
+    %span
+
+  %nav.cd-nav
+    %ul.cd-top-nav
+      %li
+        %a(href="#0")Tour
+      %li
+        %a(href="#0")Support
+      %li.has-children
         %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-          welcome, #{current_user.full_name}
+          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40")
+          #{current_user.full_name}
           %b.caret
         %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
           %li
             %a(href="#") Account
             %a(href="#") Plan and Billing
             = link_to 'Sign Out', sign_out_path
+  
+
+:javascript
+  ;(function($, window, document, undefined) {
+
+    'use strict';
+
+    var $ripple = $('.js-ripple');
+
+    $ripple.on('click.ui.ripple', function(e) {
+
+      var $this = $(this);
+      var $offset = $this.parent().offset();
+      var $circle = $this.find('.c-ripple__circle');
+
+      var x = e.pageX - $offset.left;
+      var y = e.pageY - $offset.top;
+
+      $circle.css({
+        top: y + 'px',
+        left: x + 'px'
+      });
+
+      $this.addClass('is-active');
+
+    });
+
+    $ripple.on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', function(e) {
+      $(this).removeClass('is-active');
+    });
+     $('.dropdown-toggle').on('click', function(event){
+      event.preventDefault
+     })
+  })(jQuery, window, document);
