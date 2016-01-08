@@ -231,6 +231,12 @@ Header
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .cd-search {
+    display: none;
+  }
+}
+
 .cd-search {
   position: relative;
   margin: 1.2em 5% 0.6em;

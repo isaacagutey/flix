@@ -32,8 +32,9 @@
 /               = link_to 'Sign Out', sign_out_path
 
 %header.cd-main-header
-  %a(href="#0" class="cd-logo")
+  = link_to home_path, class:"cd-logo" do
     = image_tag "likeme.svg", alt:"Logo", height:"50", width:"50"
+      
 
   
   .cd-search.c-ripple.js-ripple 
