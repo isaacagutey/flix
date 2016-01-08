@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+//= require jquery.menu-aim.js
+//= require modernizr.js
+//= require main.js
+//= require jquery.mixitup.min.js
+//= require filter_main.js
+// require_tree .
