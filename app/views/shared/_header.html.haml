@@ -32,31 +32,22 @@
 /               = link_to 'Sign Out', sign_out_path
 
 %header.cd-main-header
+  %a.cd-nav-trigger{:href => "#0"}
+    %span
   = link_to home_path, class:"cd-logo" do
     = image_tag "likeme.svg", alt:"Logo", height:"50", width:"50"
-      
-
-  
+       
   .cd-search.c-ripple.js-ripple 
     = form_tag(search_videos_path, method: "post") do
       %input(id="q" name="q" type="text" placeholder="Search...")
       = submit_tag("Search", class:"search_submit")
       .c-ripple__circle
 
-  %a.cd-nav-trigger{:href => "#0"}
-    %span
-
   %nav.cd-nav
     %ul.cd-top-nav
-      %li
-        %a(href="#0")Tour
-      %li
-        %a(href="#0")Support
       %li.has-children
         %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40")
-          #{current_user.full_name}
-          %b.caret
+          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40" class="profile-picture")
         %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
           %li
             %a(href="#") Account
