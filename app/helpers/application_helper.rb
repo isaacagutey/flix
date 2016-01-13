@@ -18,4 +18,8 @@ module ApplicationHelper
     options_for_select((1..5).map { |num| [pluralize(num, "Star"), num] }, selected)
   end
 
+  def format_date(date_time)
+    date_time.strftime("%a %B %d, %Y")
+  end
+
 end

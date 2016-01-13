@@ -9,13 +9,10 @@
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css", media: 'all'
     = javascript_include_tag "application"
   - if logged_in?
-    %body
-      %header.cd-header
-        %h1 Content Filters
-      %main.cd-main-content
-        = render 'shared/messages'
-        .cd-tab-filter-wrapper
-          = render 'shared/header'
+    %body  
+      = render 'shared/messages'
+      = render 'shared/header'
+      %main.cd-main-content.is-fixed
         %section.cd-gallery
           = yield
         .cd-filter
@@ -32,3 +29,48 @@
       %h3.footer_text &copy 2016 plsma
   :javascript
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
+    
+    jQuery(document).ready(function(){
+      jQuery('p.description').scrollbar();
+      jQuery(".owl-carousel.video-index").owlCarousel({
+          loop:false,
+          margin:2,
+          autoplayHoverPause:true,
+          dots:false,
+          responsive:{
+              0:{
+                  items:2
+              },
+              500:{
+                  items:3
+              },
+              800:{
+                  items:4
+              },
+              1130:{
+                  items:6,
+                  nav:true,
+              }
+          }
+        });
+      jQuery(".owl-carousel.video-show").owlCarousel({
+        loop:true,
+        margin:5,
+        autoplayHoverPause:true,
+        dots:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+      });
+
+    });
+
+   

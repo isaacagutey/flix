@@ -14,7 +14,7 @@ class Category < ActiveRecord::Base
   end
 
   def recent_videos
-  	videos.order("created_at DESC").first(3)
+  	videos.order("created_at DESC")
   end
 
 end

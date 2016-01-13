@@ -1,5 +1,4 @@
 section.videos_home
-  max-width: 1250px
   padding: 20px
   margin: 0 auto
   // background-color: #F7F7F7
@@ -13,18 +12,69 @@ article.video_category
       a
         color: black
 
+.videos.row
+  margin: 0px
+  margin-top: 10px
+  display: flex
+  display: -webkit-flex /* Safari */
+  flex-wrap: wrap
+  -webkit-flex-wrap: wrap         /* Safari */
+  justify-content: center
+  -webkit-justify-content: center
+
 .video.col-sm-2, .video.col-md-2
-  padding: 10px
-  width: 185px
-  height: 255px
+  padding: 5px
+  padding-top: 7px
+  width: 180px
+  height: 250px
+  text-align: center
   background-color: white
   -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75)
   -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75)
   box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75)
-  margin: 10px
+  margin: 10px 
+  // margin-top: 15px
+  float: left
+  @media only screen and (min-width: 769px)
+    margin: 10px
+  @media only screen and (max-width: 487px) 
+    width: 135px
+    height: 185px
+  @media (max-width:769px) and (min-width:487px)
+    width: 155px
+    height: 215px 
   img
-    width: 166px
-    height: 236px
+    width: 165px
+    height: 235px
     margin: 0 auto
+    @media only screen and (max-width: 487px) 
+      width: 120px
+      height: 170px
+    @media (max-width:769px) and (min-width:487px)
+      width: 140px
+      height: 200px  
     
+.movies-index
+  padding: 20px
+  p
+    padding-bottom: 5px
+  .row
+    margin: 0px
+    background: white
+    border-radius: 3px
+  .owl-controls
+    margin-top: -22px
+
+
+
+
+
+
+
+// .inline img
+//   width: 100px
+//   height: 100px
+//   padding: 5px
+//   // display: inline
+//   white-space: normal
 

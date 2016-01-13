@@ -1,34 +1,99 @@
 %article.video
-  .container
-    .row
-      .video_large_cover.col-sm-7.col-sm-offset-1
-        %img(src="#{@video.image_url["large_img"]}")
-      .video_info.col-sm-3
-        %header
-          %h3 
-            = @video.title
-          %span Rating: 4.5/5.0
-        %p 
-          = @video.description
-        .actions
-          %a.btn.btn-primary(href="") Watch Now
-          = link_to "+ My Queue", add_queue_item_path(video_id: @video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(@video)
-
-%section.reviews.container
   .row
-    .col-sm-10.col-sm-offset-1
-      = render 'reviews/form'
+    .video_large_cover.col-sm-8
+      .owl-carousel.video-show
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+        .item
+          %img(src="#{@video.image_url["large_img"]}")
+    .video_info.col-sm-4
       %header
-        %h3 User Reviews (#{@video.reviews.size})
-      %ul
-        - @video.reviews.each do |review|
-          %article.review
-            %li.row
-              .col-sm-2
-                %span=  "Rating: #{review.rating} / 5"
-                %p 
-                  by
-                  = link_to review.user.full_name, review.user
-              .col-sm-8
-                %p= review.review
-                %p= link_to 'delete', [@video, review], method: :delete if review.user == current_user
+        %h3 
+          = @video.title
+        %span Rating: 4.5/5.0
+      %hr
+      %p.description 
+        = @video.description
+      .actions
+        %a.btn.btn-primary(href="") Watch Trailer
+        = link_to "Add to queue", add_queue_item_path(video_id: @video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(@video)
+
+.video_show_sub_links
+  %ul.nav.nav-tabs
+    - if params[:tab]==nil
+      %li.active= link_to "Stats", video_path(@video)
+    - else
+      %li= link_to "Stats", video_path(@video)
+
+    - if params[:tab]== 'reviews'
+      %li.active= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+    - else
+      %li= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+
+.video_show_sub_container
+  - if params[:tab].nil?
+    %p yess i'm nil
+  - else
+    %section#cd-timeline.cd-container
+      - @video.reviews.each do |review|
+        .cd-timeline-block
+          .cd-timeline-img.cd-picture
+            %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
+          / cd-timeline-img
+          .cd-timeline-content
+            %h2= link_to review.user.full_name, review.user
+            %p= review.review
+            %a.cd-read-more{:href => "#0"} Read more
+            %span.cd-date= format_date(review.created_at)
+            / cd-timeline-content
+        / cd-timeline-block
+
+
+/ %section.reviews.container
+/   .row
+/     .col-sm-10.col-sm-offset-1
+/       = render 'reviews/form'
+/       %header
+/         %h3 User Reviews (#{@video.reviews.size})
+/ %ul
+/   - @video.reviews.each do |review|
+/     %article.review
+/       %li.row
+/         .col-sm-2
+/           %span=  "Rating: #{review.rating} / 5"
+/           %p 
+/             by
+/             = link_to review.user.full_name, review.user
+/         .col-sm-8
+/           %p= review.review
+/           %p= link_to 'delete', [@video, review], method: :delete if review.user == current_user
+
+/ %section#cd-timeline.cd-container
+/   - @video.reviews.each do |review|
+/     .cd-timeline-block
+/       .cd-timeline-img.cd-picture
+/         %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
+/       / cd-timeline-img
+/       .cd-timeline-content
+/         %h2= link_to review.user.full_name, review.user
+/         %p= review.review
+/         %a.cd-read-more{:href => "#0"} Read more
+/         %span.cd-date= format_date(review.created_at)
+/       / cd-timeline-content
+/     / cd-timeline-block

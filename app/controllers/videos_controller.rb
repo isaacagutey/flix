@@ -5,6 +5,9 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
     @categories = Category.all.reverse
+    @animations_2d = Category.where(name:"2D Animations").first
+    @animations_3d = Category.where(name:"3D Animations").first
+
   end
 
   def show

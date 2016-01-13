@@ -1,5 +1,5 @@
 .cd-main-header {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
@@ -17,9 +17,11 @@
 }
 @media only screen and (min-width: 768px) {
   .cd-main-header {
-/*    position: fixed;*/
+    position: fixed;
     height: 55px;
-    z-index: 999;
+  }
+  article.video {
+    margin-top: 56px
   }
 }
 
@@ -74,8 +76,9 @@
   white-space: nowrap;
   color: transparent;
   z-index: 999;
-
 }
+
+
 .cd-nav-trigger span, .cd-nav-trigger span::before, .cd-nav-trigger span::after {
   /* hamburger icon in CSS */
   position: absolute;

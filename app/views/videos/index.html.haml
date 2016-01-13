@@ -1,12 +1,11 @@
-%section.videos_home
-  - @categories.each do |category|
-    %article.video_category
-      %header
-        %h3
-          = link_to category.name, category_path(category)
-      .videos.row
-        - category.recent_videos.each do |video|
-          .video.col-sm-2
-            = link_to video_path(video) do
-              %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
+- @categories.each do |category|
+  .movies-index
+    %p= category.name
+    .row
+      .owl-carousel.video-index
+        - category.videos.each do |video|
+          .item
+            .video.col-sm-2
+              = link_to video_path(video) do
+                %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
 

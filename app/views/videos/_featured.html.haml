@@ -1,0 +1,4 @@
+.row.inline
+  - Video.all.each do |video|
+    = link_to video_path(video) do
+      %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
