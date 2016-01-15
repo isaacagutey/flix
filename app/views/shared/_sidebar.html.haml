@@ -1,23 +1,21 @@
 %form
   %ul.z-nav-links
     %li
-      %table
-        %tr
-          %td
-            %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-          %td
-            %span
-              Home  
+      = link_to home_path do
+        %img(src="http://cdn.mysitemyway.com/icons-watermarks/flat-circle-white-on-aqua/foundation/foundation_home/foundation_home_flat-circle-white-on-aqua_512x512.png" width="34" heigth="34")
+        %span
+          Home  
     %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_upcoming_clr_24dp_r5.png")
-      %span
-        Queue
+      = link_to queue_items_path do
+        %img(src="http://www.lifeisajourney.org/wp-content/uploads/2013/03/Watch-N-Listen-Red-Movie-Icon1.png" width="34" height="34")
+        %span
+          Queue
     %li
       %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_draft_g60_24dp_r2.png")
       %span
         Following
     %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_sent_right_g60_24dp_r1.png")
+      %img(src="http://matrimonialz.com/icon/contact.png" width="34" height="34")
       %span
         Likes
     %li

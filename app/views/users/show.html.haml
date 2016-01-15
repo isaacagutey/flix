@@ -1,43 +1,46 @@
-%section.user.container
+%section.user-banner-container
   .row
-    .col-sm-10.col-sm-offset-1
-      %article
-        %header
-          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email.downcase)}?s=40")
-          %h2= "#{@user.full_name}'s Collections (#{@queue_items.size})"
-          - if @user != current_user
-            %button.btn.btn-default
-              -if current_user.follows?(@user)
-                Following
-              -else
-                =link_to "Follow", friendships_path(friend_id: @user), method: :post, class: "btn"
-           
-            
-        %table.table
-          %thead
-            %tr
-              %th(width="30%") Video Title
-              %th(width="15%") Genre
-          %tbody
-            - @queue_items.each do |queue_item|
-              %tr
-                %td
-                  = link_to queue_item.video.title, queue_item.video
-                %td
-                  = link_to queue_item.video.categories.first.name, queue_item.video.categories.first
+    .col-md-12
+      - if @user != current_user
+        %button.btn.btn-default
+          -if current_user.follows?(@user)
+            Following
+          -else
+            =link_to "Follow", friendships_path(friend_id: @user), method: :post, class: "btn"
+  .row.nav-and-profile
+    %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email.downcase)}?s=40")
 
-%section.user_reviews.container
-  .row
-    .col-sm-10.col-sm-offset-1
-      %header
-        %h3= "#{@user.full_name}'s Reviews (#{@reviews.size})"
-      %ul
-        - @reviews.each do |review|
-          %article.review
-            %li.row
-              .col-sm-2
-                %p
-                  = link_to review.video.title, review.video
-                %col= "Rating: #{review.rating} / 5"
-              .col-sm-8
-                %p= review.review
+    %ul.nav.nav-tabs
+      - if params[:tab] == "my-movie-world" || params[:tab] == nil
+        %li.active
+          = link_to user_path(@user, tab:"my-movie-world") do 
+            %span.mworld
+      -else
+        %li
+          = link_to user_path(@user, tab:"my-movie-world") do 
+            %span.mworld
+      - if params[:tab] == "ratings-and-reviews"
+        %li.active
+          = link_to user_path(@user, tab:"ratings-and-reviews") do 
+            %span.review
+      - else
+        %li
+          = link_to user_path(@user, tab:"ratings-and-reviews") do 
+            %span.review
+      - if params[:tab] == "social"
+        %li.active
+          = link_to user_path(@user, tab:"social") do 
+            %span.people
+      - else
+        %li
+          = link_to user_path(@user, tab:"social") do 
+            %span.people
+
+.user_page
+  - if params[:tab] == "social"
+    = render 'users/people'
+  - elsif params[:tab] == "my-movie-world" || params[:tab] == nil
+    = render 'users/movie_world'
+  -elsif params[:tab] == "ratings-and-reviews"
+    = render 'users/reviews'
+    

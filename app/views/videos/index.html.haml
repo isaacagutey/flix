@@ -6,6 +6,6 @@
         - category.videos.each do |video|
           .item
             .video.col-sm-2
-              = link_to video_path(video) do
+              = link_to video_path(video, tab:"reviews") do
                 %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
 

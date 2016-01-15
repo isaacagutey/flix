@@ -1,7 +1,7 @@
 !!! 5
 %html(lang="en-US")
   %head
-    %title FLiX - a video on demand service
+    %title The Movie Social Network
     %meta(charset="UTF-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = csrf_meta_tag
@@ -17,7 +17,7 @@
           = yield
         .cd-filter
           = render 'shared/sidebar'
-        %a.cd-nav-trigger{:href => "#0"}
+        %a.cd-nav-trigger{:href => "#"}
       %hr
       %h3.footer_text &copy 2016 plsma
   - else
@@ -27,29 +27,38 @@
         = yield
       %hr
       %h3.footer_text &copy 2016 plsma
+  = javascript_include_tag 'modernizr', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'jquery.scrollbar.min', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'filter_main', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'owl.carousel', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'classie', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'dialogFx', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+
   :javascript
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
     
     jQuery(document).ready(function(){
       jQuery('p.description').scrollbar();
       jQuery(".owl-carousel.video-index").owlCarousel({
-          loop:false,
+          loop:true,
           margin:2,
+          autoplay:true,
           autoplayHoverPause:true,
           dots:false,
+          nav:true,
+          lazyLoad : true,
           responsive:{
               0:{
-                  items:2
+                  items:2,
               },
               500:{
-                  items:3
+                  items:3,
               },
-              800:{
-                  items:4
+              700:{
+                  items:4,
               },
               1130:{
                   items:6,
-                  nav:true,
               }
           }
         });

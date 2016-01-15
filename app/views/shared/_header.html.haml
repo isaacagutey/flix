@@ -48,10 +48,10 @@
       %li.has-children
         %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
           %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40" class="profile-picture")
-        %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+        %ul.dropdown-menu.user-menu(role="menu" aria-labelledby="dlabel")
           %li
             %a(href="#") Account
-            %a(href="#") Plan and Billing
+            = link_to 'Profile', user_path(current_user)
             = link_to 'Sign Out', sign_out_path
   
 

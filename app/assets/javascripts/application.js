@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require modernizr.js
-//= require jquery.scrollbar.min.js
+  // require modernizr.js
+  // require jquery.scrollbar.min.js
 // require jquery.menu-aim.js
 // require jquery.mixitup.min.js
-//= require filter_main.js
-//= require owl.carousel.js
+  // require filter_main.js
+  // require owl.carousel.js
 
 // require_tree .
 
