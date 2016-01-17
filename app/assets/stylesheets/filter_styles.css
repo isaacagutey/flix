@@ -99,7 +99,7 @@ Main Components
   position: fixed;
   height: 100vh;
   margin-top: 45px;
-  z-index: 9;
+  z-index: 60;
 /*  overflow: scroll;*/
 }
 .cd-main-content.is-fixed .cd-filter form {

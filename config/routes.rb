@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
+
+    member do
+      get 'movie_show_page'
+    end
   end
   resources :categories, only: [:show]
   resources :users, only: [:create, :show]

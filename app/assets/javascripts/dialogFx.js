@@ -8,8 +8,10 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
+jQuery(document).ready(function(){
+
 ;( function( window ) {
-	
+	 var position;
 	'use strict';
 
 	var support = { animations : Modernizr.cssanimations },
@@ -74,10 +76,13 @@
 
 	DialogFx.prototype.toggle = function() {
 		var self = this;
+		var body = $('body');
 		if( this.isOpen ) {
 			classie.remove( this.el, 'dialog--open' );
 			classie.add( self.el, 'dialog--close' );
-			
+			body.removeClass('modal-open');
+      $('#modal_close').addClass('hidden')
+			body.scrollTop(position);
 			onEndAnimation( this.el.querySelector( '.dialog__content' ), function() {
 				classie.remove( self.el, 'dialog--close' );
 			} );
@@ -87,7 +92,11 @@
 		}
 		else {
 			classie.add( this.el, 'dialog--open' );
-
+      body.addClass('modal-open');
+      $('#modal_close').removeClass('hidden')
+      position = body.scrollTop();
+      $(window).scrollTop(0);
+     
 			// callback on open
 			this.options.onOpenDialog( this );
 		}
@@ -98,3 +107,5 @@
 	window.DialogFx = DialogFx;
 
 })( window );
+
+});

@@ -38,6 +38,11 @@
     %p yess i'm nil
   - else
     %section#cd-timeline.cd-container
+      .row
+        .col-sm-10.col-sm-offset-1
+          = render 'reviews/form'
+          %header
+            %h3 User Reviews (#{@video.reviews.size})
       - @video.reviews.each do |review|
         .cd-timeline-block
           .cd-timeline-img.cd-picture
@@ -50,6 +55,8 @@
             %span.cd-date= format_date(review.created_at)
             / cd-timeline-content
         / cd-timeline-block
+
+  
 
 
 / %section.reviews.container

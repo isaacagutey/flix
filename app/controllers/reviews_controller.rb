@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit!
   end
 
- def set_video
-   @video = Video.find_by slug: params[:video_id]
- end
+  def set_video
+    @video = Video.find(params[:video_id])
+  end
 end

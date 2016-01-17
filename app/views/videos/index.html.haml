@@ -1,11 +1,48 @@
+%div#modal_close.hidden
+  %img(src="https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/cancel-512.png" height="25"  width="25")
 - @categories.each do |category|
   .movies-index
     %p= category.name
     .row
       .owl-carousel.video-index
         - category.videos.each do |video|
-          .item
-            .video.col-sm-2
-              = link_to video_path(video, tab:"reviews") do
+          = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+            .item
+              .video.col-sm-2.trigger
                 %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
 
+      .owl-carousel.video-id-hidden
+        - category.videos.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+          
+              
+
+#movie_show_details
+
+/ .button-wrap
+/   %button.trigger{"data-dialog" => "somedialog"} Open Dialog
+
+
+:javascript
+  jQuery(document).ready(function(){  
+    var dlg;
+    $('.movie_page_trigger').on('click', function() {
+      var id = $(this).attr('data-dialog')
+       dlg = new DialogFx($("#" +id + "").get(0));
+      dlg.toggle();
+    });
+
+    $('#modal_close').on('click', function(){
+      dlg.toggle();
+    })
+
+    })
+// (function() {
+
+//       var dlgtrigger = document.querySelector( '[data-dialog]' ),
+//         somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+//         dlg = new DialogFx( somedialog );
+
+//       dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+//     })();
