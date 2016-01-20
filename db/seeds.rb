@@ -34,7 +34,7 @@
  
 
   puts "Creating Videos..."
-  Video.create(title:"Monk", category_ids: [4], description:"Pizza boy Philip J. Fry awakens in the 31st century after 1,000 years of cryogenic preservation in this animated series. After he gets a job at an interplanetary delivery service, Fry embarks on ridiculous escapades to make sense of his predicament.", image_url:{"small_img" => "/tmp/monk.jpg", "trailer" => "/tmp/monk_large.jpg"}, )
+  # Video.create(title:"Monk", category_ids: [4], description:"Pizza boy Philip J. Fry awakens in the 31st century after 1,000 years of cryogenic preservation in this animated series. After he gets a job at an interplanetary delivery service, Fry embarks on ridiculous escapades to make sense of his predicament.", image_url:{"small_img" => "/tmp/monk.jpg", "trailer" => "/tmp/monk_large.jpg"}, )
 
   Video.create(title:"Ice Age 3", category_ids: [1], description:"After Sid (John Leguizamo) pilfers some dinosaur eggs, Manny (Ray Romano), Diego (Denis Leary) and the rest of their prehistoric pals enter a mysterious, underground world to rescue the hapless sloth", image_url:{"small_img" => "/tmp/3d_animations/ice_age_small.jpg", "trailer" => "/tmp/3d_animations/iceage_large.jpg"})
 
