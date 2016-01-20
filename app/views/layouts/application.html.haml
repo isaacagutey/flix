@@ -37,8 +37,21 @@
   :javascript
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
     
-    jQuery(document).ready(function(){
-      
+    jQuery(document).ready(function(){  
+      var dlg;
+      $('.movie_page_trigger').on('click', function() {
+        var id = $(this).attr('data-dialog')
+         dlg = new DialogFx($("#" +id + "").get(0));
+        dlg.toggle();
+        });
+
+      $('#modal_close').on('click', function(){
+        dlg.toggle();
+        })
+
+      });
+
+    jQuery(document).ready(function(){   
       jQuery(".owl-carousel.video-index").owlCarousel({
           margin:2,
           autoplay:true,
@@ -96,7 +109,6 @@
             }
         }
       });
-
     });
 
    

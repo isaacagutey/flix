@@ -4,7 +4,7 @@
       %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
   / cd-timeline-img
   .cd-timeline-content
-    %span(class="stars" id="star_#{review.id}")= review.rating
+    %span(class="stars" id="star_#{review.id}" value="#{review.rating}")
     %h4= link_to review.user.full_name, review.user
     %p= review.review
     %span.cd-date= format_date(review.created_at)

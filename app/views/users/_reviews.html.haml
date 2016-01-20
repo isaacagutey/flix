@@ -2,14 +2,25 @@
   .row
     .col-sm-10.col-sm-offset-1
       %header
-        %h3= "#{@user.full_name}'s Reviews (#{@reviews.size})"
+        %h3= "#{@user.full_name}'s Reviews (#{@unpaginated_reviews.size})"
       %ul
         - @reviews.each do |review|
           %article.review
             %li.row
               .col-sm-2
                 %p
-                  = link_to review.video.title, review.video if !review.video.title.nil?
-                %col= "Rating: #{review.rating} / 5"
+                  - if !review.video.nil?
+                    = link_to review.video.title, movie_show_page_video_path(review.video), remote: true
+                %span(class="stars" id="star_#{review.id}" value="#{review.rating}")
               .col-sm-8
                 %p= review.review
+
+          :javascript
+            $(function() {
+              $('#star_#{review.id}').stars();
+            });
+
+        = paginate @reviews 
+
+        - @reviews.each  do |review|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{review.video.id}"}

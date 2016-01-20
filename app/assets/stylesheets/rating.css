@@ -65,43 +65,6 @@ span.stars span {
 
 }
 
-/*#one_star::after, #two_stars::after, #three_stars::after, #four_stars::after, #five_stars::after {
- content: '';
- display: inline-block;
- right: 0;
- width: 90px;
- height: 15px;
- position: absolute;
- margin-top: -13px;
- left: 0px;
- margin-left: 50px;
-} 
-
-#one_star::after {
- background: url(star_one.png) no-repeat center center;
- background-size: cover
-}
-
-#two_stars::after {
- background: url(star_two.png) no-repeat center center;
- background-size: cover
-}
-
-#three_stars::after {
- background: url(star_three.png) no-repeat center center;
- background-size: cover
-}
-
-#four_stars::after {
- background: url(star_four.png) no-repeat center center;
- background-size: cover
-}
-
-#five_stars::after {
- background: url(star_five.png) no-repeat center center;
- background-size: cover
-}*/
-
 .average_rating_container {
   text-align: center;
   width: 70%;
@@ -114,15 +77,6 @@ span.stars span {
    margin-left: 25px;
    margin-right: 0px;
   }
-
-/*  #one_star::after, #two_stars::after, #three_stars::after, #four_stars::after, #five_stars::after {
-    margin-left: 50px
-  }*/
-
- /* #one_star, #two_stars, #three_stars, #four_stars, #five_stars {
-    width: 50%;
-    margin-left: 130px
-  }*/
 }
 
 div#b {

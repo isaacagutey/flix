@@ -1,7 +1,7 @@
 $.fn.stars = function() {
  return $(this).each(function() {
    // Get the value
-   var val = parseFloat($(this).html());
+   var val = parseFloat(Number($(this).attr("value")));
    // Make sure that the value is in 0 - 5 range, multiply to get width
    var size = Math.max(0, (Math.min(5, val))) * 16;
    // Create stars holder

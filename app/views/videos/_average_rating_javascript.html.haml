@@ -1,0 +1,10 @@
+:javascript
+  function progress(percent, $element) {
+    var progressBarWidth = percent * $element.width() / 100;
+    $element.find('div').animate({ width: progressBarWidth }, 2000).html(percent + "% ");
+  }
+  progress("#{@five_star}", $('#five_stars'));
+  progress("#{@four_star}", $('#four_stars'));
+  progress("#{@three_star}", $('#three_stars'));
+  progress("#{@two_star}", $('#two_stars'));
+  progress("#{@one_star}", $('#one_star'));

@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @queued_videos = @user.queued_videos
-    @reviews = @user.reviews
+    @unpaginated_reviews = @user.reviews
+    @reviews = @unpaginated_reviews.page(params[:page]).per(12)
   end
 
   def create

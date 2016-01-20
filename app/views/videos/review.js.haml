@@ -7,9 +7,7 @@ $("textarea#review_review.form-control").val("");
 
 $("#flying_bee").html("<div id='b'> Success</div>")
 
-// $("form#new_review.new_review").append("Review successfully published");
 $(".average_rating_container").replaceWith($("#{escape_javascript render(partial: 'videos/average_rating')}"))
-
 
 var b = function($b,speed){
 beeWidth = $b.width();

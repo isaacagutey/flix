@@ -32,7 +32,6 @@
       %li= link_to "Stats", video_path(video, tab:"stats")
 
    
-
 .video_show_sub_container
   - if params[:tab] == "stats"
     %p yess i'm nil
@@ -40,6 +39,7 @@
     %section#cd-timeline.cd-container
       .row
         .col-sm-10.col-sm-offset-1
+          / total average rating per movie
           .average_rating_container
             %table.av_rating
               %tr
@@ -86,23 +86,11 @@
                 %span#hide
                 - (1..5).each do |rate|
                   = f.radio_button :rating, rate
-                  %span
-              / = f.label :ratings
-              / = f.select(:rating, options_for_video_reviews)
-              
+                  %span             
               = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6', required: 'required'
             = f.submit "Post review", class: 'btn btn-default review_button'
       
       - video.reviews.each do |review|
         = render 'reviews/review', review: review
 
-:javascript
-  function progress(percent, $element) {
-    var progressBarWidth = percent * $element.width() / 100;
-    $element.find('div').animate({ width: progressBarWidth }, 2000).html(percent + "% ");
-  }
-  progress("#{@five_star}", $('#five_stars'));
-  progress("#{@four_star}", $('#four_stars'));
-  progress("#{@three_star}", $('#three_stars'));
-  progress("#{@two_star}", $('#two_stars'));
-  progress("#{@one_star}", $('#one_star'));
+= render 'average_rating_javascript'
