@@ -14,23 +14,23 @@
 
    Category.create(name:"Comedies")
 
-   Category.create(name:"Action")
+   # Category.create(name:"Action")
 
-   Category.create(name:"adventure")
+   # Category.create(name:"adventure")
 
-   Category.create(name:"Documentary")
+   # Category.create(name:"Documentary")
 
-   Category.create(name:"Drama")
+   # Category.create(name:"Drama")
 
-   Category.create(name:"Fantasy")
+   # Category.create(name:"Fantasy")
 
-   Category.create(name:"Horror")
+   # Category.create(name:"Horror")
 
-   Category.create(name:"Romantic Comedy")
+   # Category.create(name:"Romantic Comedy")
 
-   Category.create(name:"Science Fiction")
+   # Category.create(name:"Science Fiction")
 
-   Category.create(name:"Thriller")
+   # Category.create(name:"Thriller")
  
 
   puts "Creating Videos..."
