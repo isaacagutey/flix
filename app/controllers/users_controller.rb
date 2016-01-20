@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @queue_items = @user.queue_items
+    @queued_videos = @user.queued_videos
     @reviews = @user.reviews
   end
 

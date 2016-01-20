@@ -1,7 +1,9 @@
 %div(id="movie_show_details" class="dialog")
   .dialog__overlay
-  .dialog__content
-    .container(style="margin:0; padding:0; height: 100vh; width: 100%; overflow-y:scroll")
-      = render partial: 'videos/movie_show_page', locals: { video: @video }  
+  .dialog__content(style="margin:0; padding:0; height: 100vh; width: 100%; overflow-y:scroll")
+    = render partial: 'videos/movie_show_page', locals: { video: @video }  
     %div.close-button
-      %button.action{"data-dialog-close" => ""} Close
+      %button.action{"data-dialog-close" => ""}
+
+:javascript
+  jQuery('p.description').scrollbar();

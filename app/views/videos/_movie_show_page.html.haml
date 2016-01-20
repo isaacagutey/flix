@@ -10,13 +10,13 @@
       %header
         %h3 
           = video.title
-        %span Rating: 4.5/5.0
       %hr
       %p.description 
         = video.description
       .actions
         %a.btn.btn-primary(href="") Watch Trailer
-        = link_to "Add to queue", add_queue_item_path(video_id: video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(video)
+        %span.queue_button
+          = link_to "Add to queue", add_queue_item_path(video_id: video.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(video)
 
 .video_show_sub_links
   %ul.nav.nav-tabs
@@ -40,15 +40,69 @@
     %section#cd-timeline.cd-container
       .row
         .col-sm-10.col-sm-offset-1
+          .average_rating_container
+            %table.av_rating
+              %tr
+                %td.av_rating_td
+                  = image_tag 'star_five.png', width:'90', height:'15'
+                %td
+                  #five_stars
+                    %div
+            %table.av_rating
+              %tr
+                %td.av_rating_td
+                  = image_tag 'star_four.png', width:'90', height:'15'
+                %td
+                  #four_stars
+                    %div
+            %table.av_rating
+              %tr
+                %td.av_rating_td
+                  = image_tag 'star_three.png', width:'90', height:'15'
+                %td
+                  #three_stars
+                    %div
+            %table.av_rating
+              %tr
+                %td.av_rating_td
+                  = image_tag 'star_two.png', width:'90', height:'15'
+                %td
+                  #two_stars
+                    %div
+            %table.av_rating
+              %tr
+                %td.av_rating_td
+                  = image_tag 'star_one.png', width:'90', height:'15'
+                %td
+                  #one_star
+                    %div
+          #flying_bee
+          <br />
+          %br
           = form_for [video, Review.new], remote: :true do |f|
-            = f.label :ratings
-            = f.select(:rating, options_for_video_reviews)
-            
-            = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6'
-            %br
-            = f.submit "Submit review", class: 'btn btn-success'
-          %header
-            %h3 User Reviews (#{@video.reviews.size})
+            .review_form_container(style="background:white")
+              .movie_rating(style="text-align: center")
+                = f.radio_button :rating, 0, checked:'checked'
+                %span#hide
+                - (1..5).each do |rate|
+                  = f.radio_button :rating, rate
+                  %span
+              / = f.label :ratings
+              / = f.select(:rating, options_for_video_reviews)
+              
+              = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6', required: 'required'
+            = f.submit "Post review", class: 'btn btn-default review_button'
+      
       - video.reviews.each do |review|
-        = render 'review', review: review
+        = render 'reviews/review', review: review
 
+:javascript
+  function progress(percent, $element) {
+    var progressBarWidth = percent * $element.width() / 100;
+    $element.find('div').animate({ width: progressBarWidth }, 2000).html(percent + "% ");
+  }
+  progress("#{@five_star}", $('#five_stars'));
+  progress("#{@four_star}", $('#four_stars'));
+  progress("#{@three_star}", $('#three_stars'));
+  progress("#{@two_star}", $('#two_stars'));
+  progress("#{@one_star}", $('#one_star'));

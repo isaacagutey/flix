@@ -19,6 +19,7 @@
 // require jquery.mixitup.min.js
   // require filter_main.js
   // require owl.carousel.js
+//= require review_stars.js
 
 
 // require_tree .

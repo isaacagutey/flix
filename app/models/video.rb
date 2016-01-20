@@ -20,6 +20,10 @@ class Video < ActiveRecord::Base
     where("lower(title) LIKE ?","%#{search_term.downcase}%").order("created_at DESC")
   end
 
+  def all_ratings
+    reviews.pluck(:rating)
+  end
+
   # def self.recent_videos
   #   self.all.order("created_at DESC").first(3)
   # end

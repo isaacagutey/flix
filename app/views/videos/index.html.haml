@@ -19,9 +19,6 @@
 
 #movie_show_details
 
-/ .button-wrap
-/   %button.trigger{"data-dialog" => "somedialog"} Open Dialog
-
 
 :javascript
   jQuery(document).ready(function(){  
@@ -36,13 +33,4 @@
       dlg.toggle();
     })
 
-    })
-// (function() {
-
-//       var dlgtrigger = document.querySelector( '[data-dialog]' ),
-//         somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-//         dlg = new DialogFx( somedialog );
-
-//       dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
-
-//     })();
+  });

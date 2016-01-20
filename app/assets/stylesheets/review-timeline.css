@@ -24,6 +24,7 @@ a {
   color: #acb7c0;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
 }
 
 img {
@@ -129,9 +130,11 @@ Main components
   top: 50%;
   border-radius: 50%;
 }
-/*.cd-timeline-img.cd-picture {
-  background: #75ce66;
-}*/
+.cd-timeline-img.cd-picture:hover {
+   -ms-transform: scale(1.1,1.1); /* IE 9 */
+    -webkit-transform: scale(1.1,1.1); /* Safari */
+    transform: scale(1.1,1.1);
+}
 .cd-timeline-img.cd-movie {
   background: #c03b44;
 }
@@ -279,8 +282,7 @@ Main components
     font-size: 1.25rem;
   }
   .cd-timeline-content p {
-    font-size: 16px;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 14px;

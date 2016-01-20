@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     following_relationships.map(&:friend_id).include?(user.id)
   end
 
+  def queued_videos
+    queue_items.select{|video|video.video_id}
+  end
+
 end

@@ -53,13 +53,7 @@
 }
 
 /* Content */
-.dialog h2 {
-	margin: 0;
-	font-weight: 400;
-	font-size: 2em;
-	padding: 0 0 2em;
-	margin: 0;
-}
+
 
 .close-button{
 	display: none

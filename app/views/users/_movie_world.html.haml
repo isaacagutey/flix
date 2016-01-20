@@ -1,13 +1,29 @@
-%section.user_reviews.container
-  %table.table
-    %thead
-      %tr
-        %th(width="30%") Video Title
-        %th(width="15%") Genre
-    %tbody
-      - @queue_items.each do |queue_item|
-        %tr
-          %td
-            = link_to queue_item.video.title, queue_item.video
-          %td
-            = link_to queue_item.video.categories.first.name, queue_item.video.categories.first
+%div#modal_close.hidden
+  %img(src="https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/cancel-512.png" height="25"  width="25")
+%h2= "#{@user.full_name}'s movie collection"
+.videos.row
+  - @queued_videos.each  do |queue_item|
+    = link_to movie_show_page_video_path(queue_item.video), remote: :true, method: :get  do
+      .video.col-sm-2.trigger
+        %img(src="#{queue_item.video.image_url["small_img"]}" title="#{queue_item.video.title}")
+  
+  - @queued_videos.each  do |queue_item|
+    %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{queue_item.video.id}"}
+    
+#movie_show_details
+
+
+:javascript
+  jQuery(document).ready(function(){  
+    var dlg;
+    $('.movie_page_trigger').on('click', function() {
+      var id = $(this).attr('data-dialog')
+       dlg = new DialogFx($("#" +id + "").get(0));
+      dlg.toggle();
+    });
+
+    $('#modal_close').on('click', function(){
+      dlg.toggle();
+    })
+
+  });

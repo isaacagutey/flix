@@ -1,0 +1,161 @@
+#hide {
+    display:none;
+}
+ 
+.movie_rating input {
+    position:absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+    cursor:pointer;
+    width:17px;
+}
+ 
+.movie_rating span {
+    width:24px;
+    height:16px;
+    line-height:16px;
+    padding:1px 22px 1px 0; /* 1px FireFox fix */
+    background:url(stars.png) no-repeat -22px 0;
+}
+ 
+/* Change span immediately following the checked radio */
+ 
+.movie_rating input:checked + span {
+    background-position:-22px 0;
+}
+ 
+/* Reset all remaining stars back to default background.
+   This supersedes the above due to its ordering. */
+ 
+.movie_rating input:checked + span ~ span {
+    background-position:0 0;
+}
+
+
+span.stars, span.stars span {
+    display: block;
+    background: url(display_stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+#one_star, #two_stars, #three_stars, #four_stars, #five_stars {
+    width: 100%;
+    height: 12px;
+    border-bottom: 0;
+    background-color: #292929;
+    margin-left: 5px;
+}
+
+
+#one_star div, #two_stars div, #three_stars div, #four_stars div, #five_stars div {
+    height: 100%;
+    color: rgba(238,238,238,1);
+    text-align: right;
+    line-height: 10px; /* same as #progressBar height if we want text middle aligned */
+    font-size: 0.8em;
+    width: 0;
+   background: #0099ff;
+
+}
+
+/*#one_star::after, #two_stars::after, #three_stars::after, #four_stars::after, #five_stars::after {
+ content: '';
+ display: inline-block;
+ right: 0;
+ width: 90px;
+ height: 15px;
+ position: absolute;
+ margin-top: -13px;
+ left: 0px;
+ margin-left: 50px;
+} 
+
+#one_star::after {
+ background: url(star_one.png) no-repeat center center;
+ background-size: cover
+}
+
+#two_stars::after {
+ background: url(star_two.png) no-repeat center center;
+ background-size: cover
+}
+
+#three_stars::after {
+ background: url(star_three.png) no-repeat center center;
+ background-size: cover
+}
+
+#four_stars::after {
+ background: url(star_four.png) no-repeat center center;
+ background-size: cover
+}
+
+#five_stars::after {
+ background: url(star_five.png) no-repeat center center;
+ background-size: cover
+}*/
+
+.average_rating_container {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 487px) {
+ .average_rating_container {
+   width: 90%;
+   margin-left: 25px;
+   margin-right: 0px;
+  }
+
+/*  #one_star::after, #two_stars::after, #three_stars::after, #four_stars::after, #five_stars::after {
+    margin-left: 50px
+  }*/
+
+ /* #one_star, #two_stars, #three_stars, #four_stars, #five_stars {
+    width: 50%;
+    margin-left: 130px
+  }*/
+}
+
+div#b {
+    position: fixed;
+    left:0;
+    width: 40px;
+    height: 40px;
+    color: green;
+}
+
+div#b::after{
+ content: '';
+ display: inline-block;
+ width: 90px;
+ height: 40px;
+ background: url(flying_bee.gif) 0 0 no-repeat;
+ margin-top: -50px;
+ margin-left: 60px;
+}
+
+.av_rating {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.av_rating tr {
+  margin: 0 auto;
+}
+
+.av_rating img {
+  vertical-align: middle;
+}
+
+.av_rating_td {
+  width: 90px;
+}

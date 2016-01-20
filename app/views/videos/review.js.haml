@@ -1,0 +1,24 @@
+
+$('#cd-timeline').append($("#{escape_javascript render(partial: 'reviews/review', locals: { review: @review })}"));
+
+document.getElementById('review_rating_0').checked = true;
+
+$("textarea#review_review.form-control").val("");
+
+$("#flying_bee").html("<div id='b'> Success</div>")
+
+// $("form#new_review.new_review").append("Review successfully published");
+$(".average_rating_container").replaceWith($("#{escape_javascript render(partial: 'videos/average_rating')}"))
+
+
+var b = function($b,speed){
+beeWidth = $b.width();
+
+$b.animate({
+"left": "100%"
+}, speed);
+};
+
+$(function(){
+b($("#b"), 5000);
+});

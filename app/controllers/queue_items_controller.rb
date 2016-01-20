@@ -9,11 +9,14 @@ class QueueItemsController < ApplicationController
     @count = count + 1
     queue = QueueItem.new(video: video, user:current_user, position: @count)
     if current_user.queued_video?(queue.video) == false && queue.save
-      flash[:notice] = "#{queue.video.title} added to queue"
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render :template => "videos/remove_queue_button.js.haml"}
+      end
     else
       flash[:error] = "Error occurered whiles adding to queue"
+      redirect_to :back
     end
-    redirect_to queue_items_path
   end
 
   def update

@@ -11,9 +11,10 @@
         %span
           Queue
     %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_draft_g60_24dp_r2.png")
-      %span
-        Following
+      = link_to people_path do
+        = image_tag 'people.svg', width:"34", height:"34"
+        %span
+          Mentors
     %li
       %img(src="http://matrimonialz.com/icon/contact.png" width="34" height="34")
       %span
@@ -25,24 +26,10 @@
     %li
       %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
       %span
-        Store
-    %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-      %span
-        Recommendations
-    %li.active
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-      %span
-        Social
-    %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-      %span
-        All Reviews
-    %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-      %span
-        Ratings
-    %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
-      %span
         Actors
+
+:javascript
+  var active_link = active_link || {};
+  active_link.href =  window.location.pathname;
+  $( "a[href$= '"+active_link.href+"']" ).addClass('active')
+  

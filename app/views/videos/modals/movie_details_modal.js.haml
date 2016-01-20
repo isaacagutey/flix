@@ -1,7 +1,6 @@
 $('#movie_show_details').replaceWith($("#{escape_javascript render(file: 'videos/modals/movie_show_page.html.haml')}"));
 $('#movie_#{@video.id}').click();
 // $('textarea#review_review').click();
-$('.dialog__content').scrollTop(0);
 $(".owl-carousel.video-show").owlCarousel({
 loop:true,
 margin:5,
@@ -19,3 +18,4 @@ items:1
 }
 }
 });
+
