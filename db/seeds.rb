@@ -6,31 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
   puts "Creating Categories..."
-  1 Category.create(name:"3D Animations")
+   Category.create(name:"3D Animations")
 
-  2 Category.create(name:"2D Animations")
+   Category.create(name:"2D Animations")
 
-  3 Category.create(name:"Blockbusters")
+   Category.create(name:"Blockbusters")
 
-  4 Category.create(name:"Comedies")
+   Category.create(name:"Comedies")
 
-  5 Category.create(name:"Action")
+   Category.create(name:"Action")
 
-  6 Category.create(name:"adventure")
+   Category.create(name:"adventure")
 
-  7 Category.create(name:"Documentary")
+   Category.create(name:"Documentary")
 
-  8 Category.create(name:"Drama")
+   Category.create(name:"Drama")
 
-  9 Category.create(name:"Fantasy")
+   Category.create(name:"Fantasy")
 
-  10 Category.create(name:"Horror")
+   Category.create(name:"Horror")
 
-  11 Category.create(name:"Romantic Comedy")
+   Category.create(name:"Romantic Comedy")
 
-  12 Category.create(name:"Science Fiction")
+   Category.create(name:"Science Fiction")
 
-  13 Category.create(name:"Thriller")
+   Category.create(name:"Thriller")
  
 
   puts "Creating Videos..."
