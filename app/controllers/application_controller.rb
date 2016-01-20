@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
    def set_average_rating
-    @one_star = (( rating_array.count(1).to_f / rating_array.size.to_f ).to_f * 100).round(2)
-    @two_star = (( rating_array.count(2).to_f / rating_array.size ).to_f * 100).round(2)
-    @three_star = (( rating_array.count(3).to_f / rating_array.size ).to_f * 100).round(2)
-    @four_star = (( rating_array.count(4).to_f / rating_array.size ).to_f * 100).round(2)
-    @five_star = (( rating_array.count(5).to_f / rating_array.size ).to_f * 100).round(2)
+    @one_star = (( rating_array.count(1).to_f / rating_array.size.to_f ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(1).to_f / rating_array.size.to_f ).to_f * 100).round(2)
+    @two_star = (( rating_array.count(2).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(2).to_f / rating_array.size ).to_f * 100).round(2)
+    @three_star = (( rating_array.count(3).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(3).to_f / rating_array.size ).to_f * 100).round(2)
+    @four_star = (( rating_array.count(4).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(4).to_f / rating_array.size ).to_f * 100).round(2)
+    @five_star = (( rating_array.count(5).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(5).to_f / rating_array.size ).to_f * 100).round(2)
   end
 
 
