@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :movie_show_page]
-  before_action :set_average_rating, only: [:movie_show_page]
+  before_action :set_average_rating, only: [:movie_show_page, :show]
   before_action :require_user, only: [:index, :show, :search]
  
   def index

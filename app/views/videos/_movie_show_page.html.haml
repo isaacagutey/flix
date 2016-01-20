@@ -40,42 +40,7 @@
       .row
         .col-sm-10.col-sm-offset-1
           / total average rating per movie
-          .average_rating_container
-            %table.av_rating
-              %tr
-                %td.av_rating_td
-                  = image_tag 'star_five.png', width:'90', height:'15'
-                %td
-                  #five_stars
-                    %div
-            %table.av_rating
-              %tr
-                %td.av_rating_td
-                  = image_tag 'star_four.png', width:'90', height:'15'
-                %td
-                  #four_stars
-                    %div
-            %table.av_rating
-              %tr
-                %td.av_rating_td
-                  = image_tag 'star_three.png', width:'90', height:'15'
-                %td
-                  #three_stars
-                    %div
-            %table.av_rating
-              %tr
-                %td.av_rating_td
-                  = image_tag 'star_two.png', width:'90', height:'15'
-                %td
-                  #two_stars
-                    %div
-            %table.av_rating
-              %tr
-                %td.av_rating_td
-                  = image_tag 'star_one.png', width:'90', height:'15'
-                %td
-                  #one_star
-                    %div
+          = render 'average_rating_stars'
           #flying_bee
           <br />
           %br

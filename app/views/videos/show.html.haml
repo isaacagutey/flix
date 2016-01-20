@@ -31,7 +31,6 @@
     - else
       %li= link_to "Stats", video_path(@video, tab:"stats")
 
-   
 
 .video_show_sub_container
   - if params[:tab] == "stats"
@@ -40,53 +39,23 @@
     %section#cd-timeline.cd-container
       .row
         .col-sm-10.col-sm-offset-1
-          = render 'reviews/form'
-          %header
-            %h3 User Reviews (#{@video.reviews.size})
+          / total average rating per movie
+          = render 'average_rating_stars'
+          #flying_bee
+          <br />
+          %br
+          = form_for [@video, Review.new], remote: :true do |f|
+            .review_form_container(style="background:white")
+              .movie_rating(style="text-align: center")
+                = f.radio_button :rating, 0, checked:'checked'
+                %span#hide
+                - (1..5).each do |rate|
+                  = f.radio_button :rating, rate
+                  %span             
+              = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6', required: 'required'
+            = f.submit "Post review", class: 'btn btn-default review_button'
+      
       - @video.reviews.each do |review|
-        .cd-timeline-block
-          .cd-timeline-img.cd-picture
-            %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
-          / cd-timeline-img
-          .cd-timeline-content
-            %h2= link_to review.user.full_name, review.user
-            %p= review.review
-            %span.cd-date= format_date(review.created_at)
-            / cd-timeline-content
-        / cd-timeline-block
+        = render 'reviews/review', review: review
 
-  
-
-
-/ %section.reviews.container
-/   .row
-/     .col-sm-10.col-sm-offset-1
-/       = render 'reviews/form'
-/       %header
-/         %h3 User Reviews (#{@video.reviews.size})
-/ %ul
-/   - @video.reviews.each do |review|
-/     %article.review
-/       %li.row
-/         .col-sm-2
-/           %span=  "Rating: #{review.rating} / 5"
-/           %p 
-/             by
-/             = link_to review.user.full_name, review.user
-/         .col-sm-8
-/           %p= review.review
-/           %p= link_to 'delete', [@video, review], method: :delete if review.user == current_user
-
-/ %section#cd-timeline.cd-container
-/   - @video.reviews.each do |review|
-/     .cd-timeline-block
-/       .cd-timeline-img.cd-picture
-/         %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
-/       / cd-timeline-img
-/       .cd-timeline-content
-/         %h2= link_to review.user.full_name, review.user
-/         %p= review.review
-/         %a.cd-read-more{:href => "#0"} Read more
-/         %span.cd-date= format_date(review.created_at)
-/       / cd-timeline-content
-/     / cd-timeline-block
+= render 'average_rating_javascript'
