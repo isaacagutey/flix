@@ -24,3 +24,5 @@
 
         - @reviews.each  do |review|
           %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{review.video.id}"}
+
+= render 'shared/analytics'

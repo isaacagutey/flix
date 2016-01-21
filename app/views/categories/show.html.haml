@@ -13,3 +13,5 @@
       .video.col-md-2
         = link_to video_path(video) do 
           %img(src="#{video.image_url["small_img"]}")
+
+= render 'shared/analytics'
