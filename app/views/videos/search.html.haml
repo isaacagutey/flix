@@ -1,7 +1,7 @@
-= render 'videos/close_button'
+= render 'shared/close_button'
 .videos.row
   - if @search_videos.empty?
-    %p Sorry no result found
+    %p(style="margin-top: 200px") Sorry no result found
   - else
     - @search_videos.each do |video|
       .video.col-sm-2

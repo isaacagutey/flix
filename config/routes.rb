@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show]
   resources :queue_items, only: [:destroy]
   resources :friendships, only: [:create, :destroy]
+  resources :admins, only: [:index]
 
 end

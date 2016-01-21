@@ -1,7 +1,8 @@
-= render 'close_button'
+= render 'shared/close_button'
 - @categories.each do |category|
   .movies-index
-    %p= category.name
+    = link_to category.name, category, class:"category_link"
+    %span.category_page_trigger.hidden{"data-dialog" => "category_show_page", :id => "category_#{category.id}"}
     .row
       .owl-carousel.video-index
         - category.videos.each do |video|
@@ -17,5 +18,7 @@
               
 
 #movie_show_details
+
+#category_show_page
 
 = render 'shared/analytics'

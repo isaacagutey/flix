@@ -1,0 +1,7 @@
+= render "shared/close_button"
+%div(id="category_show_page" class="dialog")
+  .dialog__overlay
+  .dialog__content(style="margin:0; padding:0; height: 100vh; width: 100%; overflow-y:scroll")
+    = render partial: 'categories/modals/show', locals: { category: @category }  
+    %div.close-button
+      %button.action{"data-dialog-close" => ""}

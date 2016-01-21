@@ -1,8 +1,8 @@
 = render "shared/close_button"
-%section.genre
+%section.genre(style="padding-bottom: 100px")
   %header.clearfix
     %h1 
-      = @category.name
+      = category.name
     .genre_sorting
       Sort by:
       %select(name="")
@@ -10,12 +10,12 @@
         %option(value="z-a") Title: Z - A
         %option(value="rating") Rating
   .videos.row
-    - @category.videos.each do |video|
+    - category.videos.each do |video|
       .video.col-md-2
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do 
           %img(src="#{video.image_url["small_img"]}")
 
-    - @category.videos.each do |video|
+    - category.videos.each do |video|
       %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 #movie_show_details
