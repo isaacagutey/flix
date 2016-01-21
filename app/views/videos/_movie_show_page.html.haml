@@ -26,10 +26,10 @@
       %li= link_to "Reviews(#{video.reviews.size})", video_path(video, tab: 'reviews')
 
 
-    - if params[:tab]== "stats"
-      %li.active= link_to "Stats", video_path(video, tab:"stats")
-    - else
-      %li= link_to "Stats", video_path(video, tab:"stats")
+    / - if params[:tab]== "stats"
+    /   %li.active= link_to "Stats", video_path(video, tab:"stats")
+    / - else
+    /   %li= link_to "Stats", video_path(video, tab:"stats")
 
    
 .video_show_sub_container

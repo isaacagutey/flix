@@ -26,4 +26,4 @@ class SessionsController < ApplicationController
 
 end
 
-# User.create(email:"admin@gmail.com", password:0243530639, full_name:"admin", role:"Admin")
+ 
