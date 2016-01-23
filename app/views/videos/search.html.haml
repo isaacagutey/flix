@@ -6,10 +6,10 @@
     - @search_videos.each do |video|
       .video.col-sm-2
         = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
-          %img(src="#{video.image_url["small_img"]}" title="#{video.title}")
+          %img(src="https://image.tmdb.org/t/p/w780#{video["profile_path"]}" )
 
     - @search_videos.each do |video|
-      %span.movie_page_trigger.hidden{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      %span.movie_page_trigger.hidden{"data-dialog" => "movie_show_details", :id => "movie_#{video["id"]}"}
 
 #movie_show_details
 

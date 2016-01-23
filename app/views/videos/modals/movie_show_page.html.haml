@@ -1,7 +1,7 @@
 %div(id="movie_show_details" class="dialog")
   .dialog__overlay
   .dialog__content(style="margin:0; padding:0; height: 100vh; width: 100%; overflow-y:scroll")
-    = render partial: 'videos/movie_show_page', locals: { video: @video }  
+    = render partial: 'videos/movie_show_page', locals: { movie: @movie, backdrops: @backdrops, cast: @cast, crew: @crew, trailer: @trailer, director: @director, similar: @similar }  
     %div.close-button
       %button.action{"data-dialog-close" => ""}
 

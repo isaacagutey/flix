@@ -19,10 +19,14 @@ class Video < ActiveRecord::Base
     return [] if search_term.blank?
     where("lower(title) LIKE ?","%#{search_term.downcase}%").order("created_at DESC")
   end
-
-  def all_ratings
-    reviews.pluck(:rating)
+  
+  def backdrops(movie_id)
+    Tmdb::Movie.images(movie_id)['backdrops']
   end
+  
+  # def all_ratings
+  #   reviews.pluck(:rating)
+  # end
 
   # def self.recent_videos
   #   self.all.order("created_at DESC").first(3)

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'people', to: 'users#people'
 
   resources :videos, only: [:show] do
-    resources :reviews
     collection do
       post :search
     end
@@ -27,5 +26,6 @@ Rails.application.routes.draw do
   resources :queue_items, only: [:destroy]
   resources :friendships, only: [:create, :destroy]
   resources :admins, only: [:index]
+  resources :reviews
 
 end

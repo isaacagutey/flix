@@ -81,6 +81,9 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -96,6 +99,7 @@ GEM
     mime-types (1.25.1)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    multi_xml (0.5.5)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
@@ -165,6 +169,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    themoviedb-api (1.0.4)
+      httparty (~> 0.13.7, >= 0.13.7)
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -209,6 +215,7 @@ DEPENDENCIES
   rspec-rails (= 2.99)
   sass-rails
   shoulda-matchers (= 2.7.0)
+  themoviedb-api
   thin
   uglifier
   vcr (= 2.9.3)

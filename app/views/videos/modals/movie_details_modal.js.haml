@@ -1,5 +1,5 @@
 $('#movie_show_details').replaceWith($("#{escape_javascript render(file: 'videos/modals/movie_show_page.html.haml')}"));
-$('#movie_#{@video.id}').click();
+$('#movie_#{@movie.id}').click();
 
 $(".owl-carousel.video-show").owlCarousel({
 loop:true,

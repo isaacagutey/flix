@@ -1,37 +1,103 @@
+/ %article.video
+/   .row
+/     .video_large_cover.col-sm-8 
+/       .owl-carousel.video-show
+/         - @video.image_gallery.each do |image|
+/           .item
+/             %img(src="#{image}")
+          
+/     .video_info.col-sm-4
+/       %header
+/         %h3 
+/           = @video.title
+/         %span Rating: 4.5/5.0
+/       %hr
+/       %p.description 
+/         = @video.description
+/       .actions
+/         %a.btn.btn-primary(href="") Watch Trailer
+/         = link_to "Add to queue", add_queue_item_path(video_id: @video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(@video)
+
+/ .video_show_sub_links
+/   %ul.nav.nav-tabs
+/     - if params[:tab] == "reviews" || params[:tab] == nil
+/       %li.active= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+/     - else
+/       %li= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+
+
+/     / - if params[:tab]== "stats"
+/     /   %li.active= link_to "Stats", video_path(@video, tab:"stats")
+/     / - else
+/     /   %li= link_to "Stats", video_path(@video, tab:"stats")
+
+
+/ .video_show_sub_container
+/   - if params[:tab] == "stats"
+/     %p yess i'm nil
+/   - else
+/     %section#cd-timeline.cd-container
+/       .row
+/         .col-sm-10.col-sm-offset-1
+/           / total average rating per movie
+/           = render 'average_rating_stars'
+/           #flying_bee
+/           <br />
+/           %br
+/           = form_for [@video, Review.new], remote: :true do |f|
+/             .review_form_container(style="background:white")
+/               .movie_rating(style="text-align: center")
+/                 = f.radio_button :rating, 0, checked:'checked'
+/                 %span#hide
+/                 - (1..5).each do |rate|
+/                   = f.radio_button :rating, rate
+/                   %span             
+/               = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6', required: 'required'
+/             = f.submit "Post review", class: 'btn btn-default review_button'
+      
+/       - @video.reviews.each do |review|
+/         = render 'reviews/review', review: review
+
+/ = render 'average_rating_javascript'
+
+/ = render 'shared/analytics'
+
+
+
 %article.video
   .row
     .video_large_cover.col-sm-8 
       .owl-carousel.video-show
-        - @video.image_gallery.each do |image|
+        - @backdrops.each do |backdrop|
           .item
-            %img(src="#{image}")
+            %img(src="http://image.tmdb.org/t/p/w780#{backdrop.file_path}")
           
     .video_info.col-sm-4
       %header
         %h3 
-          = @video.title
-        %span Rating: 4.5/5.0
+          = @movie.title
       %hr
       %p.description 
-        = @video.description
+        = @movie.overview
       .actions
         %a.btn.btn-primary(href="") Watch Trailer
-        = link_to "Add to queue", add_queue_item_path(video_id: @video.id), method: "post", class: "btn btn-default" if !current_user.queued_video?(@video)
+        %span.queue_button
+          = link_to "Add to queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(@movie)
 
 .video_show_sub_links
   %ul.nav.nav-tabs
     - if params[:tab] == "reviews" || params[:tab] == nil
-      %li.active= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+      %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
     - else
-      %li= link_to "Reviews(#{@video.reviews.size})", video_path(@video, tab: 'reviews')
+      %li= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
 
 
     / - if params[:tab]== "stats"
-    /   %li.active= link_to "Stats", video_path(@video, tab:"stats")
+    /   %li.active= link_to "Stats", video_path(video, tab:"stats")
     / - else
-    /   %li= link_to "Stats", video_path(@video, tab:"stats")
+    /   %li= link_to "Stats", video_path(video, tab:"stats")
 
-
+   
 .video_show_sub_container
   - if params[:tab] == "stats"
     %p yess i'm nil
@@ -44,18 +110,19 @@
           #flying_bee
           <br />
           %br
-          = form_for [@video, Review.new], remote: :true do |f|
+          = form_for Review.new, remote: :true do |f|
             .review_form_container(style="background:white")
               .movie_rating(style="text-align: center")
                 = f.radio_button :rating, 0, checked:'checked'
                 %span#hide
                 - (1..5).each do |rate|
                   = f.radio_button :rating, rate
-                  %span             
+                  %span      
+              = f.hidden_field :video_id, value: @movie.id       
               = f.text_area :review, placeholder: "Enter review here", class: 'form-control', rows:'6', required: 'required'
             = f.submit "Post review", class: 'btn btn-default review_button'
       
-      - @video.reviews.each do |review|
+      - @reviews.each do |review|
         = render 'reviews/review', review: review
 
 = render 'average_rating_javascript'

@@ -1,13 +1,16 @@
 class ReviewsController < ApplicationController
-  before_action :set_review_video, only: [:create, :edit, :destroy]
+  # before_action :set_review_video, only: [:create, :edit, :destroy]
 
   def new
     @review = Review.new
   end
 
   def create
-    @review = @video.reviews.build(review_params)
+    @review = Review.new
+    @review.video_id = params[:review][:video_id]
     @review.user = current_user
+    @review.rating = params[:review][:rating]
+    @review.review = params[:review][:review]
     if @review.save
       set_average_rating
       respond_to do |format|
@@ -37,12 +40,13 @@ class ReviewsController < ApplicationController
     params.require(:review).permit!
   end
 
-  def set_review_video
-    @video = Video.find(params[:video_id])
-  end
+  # def set_review_video
+  #   @video = Video.find(params[:video_id])
+  # end
 
   def rating_array
-    set_review_video.all_ratings
+    reviews = Review.where(video_id:params[:id])
+    reviews.pluck(:rating)
   end
 
 end
