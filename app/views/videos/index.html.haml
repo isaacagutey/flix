@@ -12,7 +12,7 @@
   .row
     .owl-carousel.video-index
       - @animations.each do |video|
-        = link_to video_path(video.id) do
+        = link_to video_path(video.id), remote: :true do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")

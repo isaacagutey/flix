@@ -43,7 +43,6 @@ class VideosController < ApplicationController
   # def movie_show_page
   #   @reviews = Review.where(video_id:211672)
   #   render "videos/modals/movie_details_modal.js"
-
   # end
 
   def search
@@ -61,8 +60,16 @@ class VideosController < ApplicationController
     # @video = Video.find(params[:id])
   end
 
-  def get_backdrops
-    @backdrops = Tmdb::Movie.backdrops(params[:id])
+  def get_backdrops 
+    # @backdrops = Tmdb::Movie.backdrops(params[:id])
+    # @result = Resource.new("/movie/#{params[:id]}/images", filters).get
+    backdrop_path = []
+    @response = HTTParty.get("https://api.themoviedb.org/3/movie/#{params[:id]}/images?api_key=b5bbd6c363545bc9f1c48c7f3195372f")["backdrops"]
+    @response.each do |backdrop|
+      backdrop_path << backdrop["file_path"]
+    end
+    @backdrops = backdrop_path.first(10)
+
   end
 
   def set_movie_details 
