@@ -1,10 +1,13 @@
 %article.video
   .row
     .video_large_cover.col-sm-8 
-      .owl-carousel.video-show
-        - backdrops.each do |backdrop|
-          .item
-            %img(src="http://image.tmdb.org/t/p/w780#{backdrop}")
+      - if backdrops.size < 2
+        %img(src="http://image.tmdb.org/t/p/w780#{backdrops.first}")
+      - else
+        .owl-carousel.video-show
+          - backdrops.each do |backdrop|
+            .item
+              %img(src="http://image.tmdb.org/t/p/w780#{backdrop}")
           
     .video_info.col-sm-4
       %header
@@ -16,7 +19,7 @@
       .actions
         %a.btn.btn-primary(href="") Watch Trailer
         %span.queue_button
-          = link_to "Add to queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(movie)
+          = link_to "Add to queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(movie.id)
 
 .video_show_sub_links
   %ul.nav.nav-tabs

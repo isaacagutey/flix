@@ -1,0 +1,66 @@
+= render "shared/close_button"
+%section.genre
+  %header.clearfix
+    %h1 
+      = @title
+    .genre_sorting
+      Sort by:
+      %select(name="")
+        %option(value="a-z") Title: A - Z
+        %option(value="z-a") Title: Z - A
+        %option(value="rating") Rating
+  .videos.row#displayed_genre
+    = render 'genre'
+
+  / = paginate @genre, remote: :true
+
+#movie_show_details
+
+= render 'shared/analytics'
+
+#modal_trigger_wrapper
+  :javascript 
+    jQuery(document).ready(function(){  
+      var dlg;
+      $('.movie_page_trigger, .category_page_trigger').on('click', function() {
+        var id = $(this).attr('data-dialog')
+        dlg = new DialogFx($("#" +id + "").get(0));
+        dlg.toggle();
+      });
+
+      $('#modal_close').on('click', function(){
+         dlg.toggle();
+         })
+     });
+     
+:javascript
+  filter = false;
+  $(window).scroll(function() {
+    if($(window).scrollTop() > $(document).height() - $(window).height() - 150) {
+      loadMoreResults();
+    }
+      return $(window).scroll;
+  });
+   
+
+    window.last_url ='';
+    var page = 2;
+
+    function loadMoreResults() {
+      var url = "/videos/#{@id}/genre_show?genre=Fantasy&page="+page+""
+      // var url = $('nav.pagination a[rel=next]').attr('href');
+
+          if (url != undefined && filter == false && url != window.last_url) {
+             // alert(url)
+            window.last_url = url;
+            page = page + 1
+            $.getScript(url);
+          }
+      };
+
+/ <div id="paginate_container" class="">
+/   <div class="row" id="displayed_vendors">
+/     <%= render @vendors %>
+/   </div>
+/     <%= paginate @vendors, :remote => true %>
+/ </div>

@@ -18,8 +18,12 @@ Rails.application.routes.draw do
     end
 
     member do
-      get 'movie_show_page'
+      get 'genre_show'
     end
+
+    # member do
+    #   get 'movie_show_page'
+    # end
   end
   resources :categories, only: [:show]
   resources :users, only: [:create, :show]

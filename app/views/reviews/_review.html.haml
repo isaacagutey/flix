@@ -1,7 +1,7 @@
 .cd-timeline-block
   .cd-timeline-img.cd-picture
     = link_to review.user do
-      %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=40"}
+      %img{:alt => "Picture", :src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(review.user.email.downcase)}?s=125"}
   / cd-timeline-img
   .cd-timeline-content
     %span(class="stars" id="star_#{review.id}" value="#{review.rating}")

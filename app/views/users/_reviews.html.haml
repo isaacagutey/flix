@@ -1,16 +1,17 @@
+= render 'shared/close_button'
 %section.user_reviews.container
   .row
     .col-sm-10.col-sm-offset-1
       %header
-        %h3= "#{@user.full_name}'s Reviews (#{@unpaginated_reviews.size})"
+        %h3= "#{@user.full_name}'s Reviews (#{@all_reviews.size})"
       %ul
         - @reviews.each do |review|
           %article.review
             %li.row
               .col-sm-2
                 %p
-                  - if !review.video.nil?
-                    = link_to review.video.title, movie_show_page_video_path(review.video), remote: true
+                  - if !review.video_id.nil?
+                    = link_to movie(review.video_id).title, video_path(review.video_id), remote: true
                 %span(class="stars" id="star_#{review.id}" value="#{review.rating}")
               .col-sm-8
                 %p= review.review
@@ -20,9 +21,11 @@
               $('#star_#{review.id}').stars();
             });
 
+        - @reviews.each  do |review|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{review.id}"}
+
         = paginate @reviews 
 
-        - @reviews.each  do |review|
-          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{review.video.id}"}
+#movie_show_details
 
 = render 'shared/analytics'

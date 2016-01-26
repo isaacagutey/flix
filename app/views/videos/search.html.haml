@@ -1,15 +1,15 @@
 = render 'shared/close_button'
 .videos.row
-  - if @search_videos.empty?
+  - if @movie.empty?
     %p(style="margin-top: 200px") Sorry no result found
   - else
-    - @search_videos.each do |video|
+    - @movie.each do |video|
       .video.col-sm-2
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
-          %img(src="https://image.tmdb.org/t/p/w780#{video["profile_path"]}" )
+        = link_to video_path(video.id), remote: :true, method: :get  do
+          %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    - @search_videos.each do |video|
-      %span.movie_page_trigger.hidden{"data-dialog" => "movie_show_details", :id => "movie_#{video["id"]}"}
+    - @movie.each do |video|
+      %span.movie_page_trigger.hidden{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 #movie_show_details
 

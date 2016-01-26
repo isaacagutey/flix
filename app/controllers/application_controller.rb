@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  @@page = rand(1..10)
   helper_method :current_user, :logged_in?
 
   def current_user
@@ -42,83 +42,83 @@ class ApplicationController < ActionController::Base
   end
 
   def animation
-    Tmdb::Genre.movies(16, page:1).results
+    Tmdb::Genre.movies(16, page: @@page)
   end
 
   def action
-    Tmdb::Genre.movies(28, page:1).results
+    Tmdb::Genre.movies(28, page: @@page)
   end
 
   def adventure
-    Tmdb::Genre.movies(12, page:1).results
+    Tmdb::Genre.movies(12, page: @@page)
   end
 
   def comedy
-    Tmdb::Genre.movies(35, page:1).results
+    Tmdb::Genre.movies(35, page: @@page)
   end
 
   def crime
-    Tmdb::Genre.movies(80, page:1).results
+    Tmdb::Genre.movies(80, page: @@page)
   end
 
   def documentary
-    Tmdb::Genre.movies(99, page:1).results
+    Tmdb::Genre.movies(99, page: @@page)
   end
 
   def foreign
-    Tmdb::Genre.movies(10769, page:1).results
+    Tmdb::Genre.movies(10769, page: @@page)
   end
 
   def history
-    Tmdb::Genre.movies(36, page:1).results
+    Tmdb::Genre.movies(36, page: @@page)
   end
 
   def horror
-    Tmdb::Genre.movies(28, page:1).results
+    Tmdb::Genre.movies(27, page: @@page)
   end
 
   def music
-    Tmdb::Genre.movies(10402, page:1).results
+    Tmdb::Genre.movies(10402, page: @@page)
   end
 
   def mystery
-    Tmdb::Genre.movies(9648, page:1).results
+    Tmdb::Genre.movies(9648, page: @@page)
   end
 
   def romance
-    Tmdb::Genre.movies(10749, page:1).results
+    Tmdb::Genre.movies(10749, page: @@page)
   end
 
   def science_fiction
-    Tmdb::Genre.movies(878, page:1).results
+    Tmdb::Genre.movies(878, page: @@page)
   end
 
   def tv_movie
-    Tmdb::Genre.movies(10770, page:1).results
+    Tmdb::Genre.movies(10770, page: @@page)
   end
 
   def thriller
-    Tmdb::Genre.movies(53, page:1).results
+    Tmdb::Genre.movies(53, page: @@page)
   end
 
   def war
-    Tmdb::Genre.movies(10752, page:1).results
+    Tmdb::Genre.movies(10752, page: @@page)
   end
 
   def western
-    Tmdb::Genre.movies(37, page:1).results
+    Tmdb::Genre.movies(37, page: @@page)
   end
 
   def drama
-    Tmdb::Genre.movies(18, page:1).results
+    Tmdb::Genre.movies(18, page: @@page)
   end
 
   def family
-    Tmdb::Genre.movies(10751, page:1).results
+    Tmdb::Genre.movies(10751, page: @@page)
   end
 
   def fantasy
-    Tmdb::Genre.movies(14, page:1).results
+    Tmdb::Genre.movies(14, page: @@page)
   end
 
 

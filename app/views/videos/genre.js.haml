@@ -1,0 +1,26 @@
+$('#displayed_genre').html('#{j render 'videos/genre'}');
+
+/ $("#modal_trigger_wrapper").replaceWith($("#{escape_javascript render(file: 'videos/modal_trigger.html.haml')}"));
+/ - if @genre.last_page?
+/   $(window).off('scroll');
+/   $('.loading-pagination').remove();
+/   $('.pagination').remove();
+/ - else
+/ $('.pagination').html('#{j paginate @genre}')
+/ - sleep 2
+
+/ $('#movie_show_details').html($("#movie_show_details"))
+/ jQuery(document).ready(function(){  
+/ var dlg;
+/ $('.movie_page_trigger').on('click', function() {
+/ var id = $(this).attr('data-dialog')
+/ dlg = new DialogFx($("#" +id + "").get(0));
+/ dlg.toggle();
+/ });
+
+/ $('#modal_close').on('click', function(){
+/ if (dlg != undefined ){
+/ dlg.toggle();
+/ }
+/ })
+/ });

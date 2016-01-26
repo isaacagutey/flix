@@ -1,326 +1,330 @@
 = render 'shared/close_button'
-/ - @categories.each do |category|
+/ - @categories.results.each do |category|
 /   .movies-index
 /     = category
 /     = link_to category.name, category, class:"category_link"
 /     %span.category_page_trigger.hidden{"data-dialog" => "category_show_page", :id => "category_#{category.id}"}
 
+
+
+/ FANTASY
+.movies-index
+  = link_to 'Fantasy', genre_show_video_path(@fantasy.id, genre: "Fantasy"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @fantasy.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+    .owl-carousel.video-id-hidden
+      - @fantasy.results.each do |video|
+        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}   
+
+
 / ANIMATIONS
 
 .movies-index
-  = link_to 'Animations', nil, class:"category_link"
+  = link_to 'Animations', genre_show_video_path(@animations.id, genre: "Animations"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @animations.each do |video|
+      - @animations.results.each do |video|
         = link_to video_path(video.id), remote: :true do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @animations.each do |video|
+      - @animations.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / ACTION
 .movies-index
-  = link_to 'Action', nil, class:"category_link"
+  = link_to 'Action', genre_show_video_path(@action.id, genre: "Action"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @action.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @action.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @action.each do |video|
+      - @action.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / ADVENTURE
 .movies-index
-  = link_to 'Adventure', nil, class:"category_link"
+  = link_to 'Adventure', genre_show_video_path(@adventure.id, genre: "Adventure"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @adventure.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @adventure.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @adventure.each do |video|
+      - @adventure.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / COMEDY
 .movies-index
-  = link_to 'Comedy', nil, class:"category_link"
+  = link_to 'Comedy', genre_show_video_path(@adventure.id, genre: "Comedy"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @comedy.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @comedy.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @comedy.each do |video|
+      - @comedy.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / CRIME
 .movies-index
-  = link_to 'Crime', nil, class:"category_link"
+  = link_to 'Crime', genre_show_video_path(@crime.id, genre: "Crime"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @crime.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @crime.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @crime.each do |video|
+      - @crime.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / DOCUMENTARY
 .movies-index
-  = link_to 'Documentary', nil, class:"category_link"
+  = link_to 'Documentary', genre_show_video_path(@documentary.id, genre: "Documentary"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @documentary.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @documentary.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @documentary.each do |video|
+      - @documentary.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / FOREIGN
 .movies-index
-  = link_to 'Foreign', nil, class:"category_link"
+  = link_to 'Foreign', genre_show_video_path(@foreign.id, genre: "Foreign"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @foreign.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @foreign.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @foreign.each do |video|
+      - @foreign.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / HISTORY
 .movies-index
-  = link_to 'History', nil, class:"category_link"
+  = link_to 'History', genre_show_video_path(@history, genre: "History"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @history.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @history.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @history.each do |video|
+      - @history.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / HORROR
 .movies-index
-  = link_to 'Horror', nil, class:"category_link"
+  = link_to 'Horror', genre_show_video_path(@horror.id, genre: "Horror"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @horror.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @horror.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @horror.each do |video|
+      - @horror.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / MUSIC
 .movies-index
-  = link_to 'Music', nil, class:"category_link"
+  = link_to 'Music', genre_show_video_path(@music.id, genre: "Music"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @music.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @music.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @music.each do |video|
+      - @music.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / MYSTERY
 .movies-index
-  = link_to 'Mystery', nil, class:"category_link"
+  = link_to 'Mystery', genre_show_video_path(@mystery.id, genre: "Mystery"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @mystery.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @mystery.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @mystery.each do |video|
+      - @mystery.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / ROMANCE
 .movies-index
-  = link_to 'Romance', nil, class:"category_link"
+  = link_to 'Romance', genre_show_video_path(@romance.id, genre: "Romance"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @romance.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @romance.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @romance.each do |video|
+      - @romance.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / SCIENCE FICTION
 .movies-index
-  = link_to 'Science Fiction', nil, class:"category_link"
+  = link_to 'Science Fiction', genre_show_video_path(@science_fiction.id, genre: "Science Fiction"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @science_fiction.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @science_fiction.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @science_fiction.each do |video|
+      - @science_fiction.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
           
 
 / TV MOVIE
 .movies-index
-  = link_to 'Tv Movie', nil, class:"category_link"
+  = link_to 'Tv Movie', genre_show_video_path(@tv_movie.id, genre: "Tv Movie"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @tv_movie.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @tv_movie.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @tv_movie.each do |video|
+      - @tv_movie.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / THRILLER
 .movies-index
-  = link_to 'Thriller', nil, class:"category_link"
+  = link_to 'Thriller', genre_show_video_path(@thriller.id, genre: "Thriller"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @thriller.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @thriller.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @thriller.each do |video|
+      - @thriller.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / WAR
 .movies-index
-  = link_to 'War', nil, class:"category_link"
+  = link_to 'War', genre_show_video_path(@war.id, genre: "War"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @war.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @war.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @war.each do |video|
+      - @war.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
 / WESTERN
 .movies-index
-  = link_to 'Western', nil, class:"category_link"
+  = link_to 'Western', genre_show_video_path(@western.id, genre: "Western"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @western.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @western.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @western.each do |video|
+      - @western.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 / DRAMA
 .movies-index
-  = link_to 'Drama', nil, class:"category_link"
+  = link_to 'Drama', genre_show_video_path(@drama.id, "Drama"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @drama.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @drama.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @drama.each do |video|
+      - @drama.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 / FAMILY
 .movies-index
-  = link_to 'Family', nil, class:"category_link"
+  = link_to 'Family', genre_show_video_path(@family.id, genre: "Family"), class:"category_link"
   .row
     .owl-carousel.video-index
-      - @family.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
+      - @family.results.each do |video|
+        = link_to video_path(video.id), remote: :true, method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
     .owl-carousel.video-id-hidden
-      - @family.each do |video|
+      - @family.results.each do |video|
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
-/ FANTASY
-.movies-index
-  = link_to 'Fantasy', nil, class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @fantasy.each do |video|
-        = link_to movie_show_page_video_path(video), remote: :true, method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @fantasy.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}   
 
 
 #movie_show_details

@@ -20,6 +20,7 @@
   // require filter_main.js
   // require owl.carousel.js
 //= require review_stars.js
+//= require pace.js
 
 
 // require_tree .

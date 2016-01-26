@@ -36,20 +36,28 @@
 
   :javascript
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
-    
-    jQuery(document).ready(function(){  
-      var dlg;
-      $('.movie_page_trigger, .category_page_trigger').on('click', function() {
-        var id = $(this).attr('data-dialog')
-         dlg = new DialogFx($("#" +id + "").get(0));
-        dlg.toggle();
-        });
 
-      $('#modal_close').on('click', function(){
-        dlg.toggle();
-        })
+     var href = window.location.pathname
+     var path_name = href.substr(href.lastIndexOf('/') + 1)
+    if (path_name != "genre_show"){
+       jQuery(document).ready(function(){  
+        var dlg;
+        $('.movie_page_trigger, .category_page_trigger').on('click', function() {
+          var id = $(this).attr('data-dialog')
+           dlg = new DialogFx($("#" +id + "").get(0));
+          dlg.toggle();
+          });
 
-      });
+        $('#modal_close').on('click', function(){
+           if (dlg != undefined ){
+            dlg.toggle();
+            }
+          alert("I'm executing")
+          })
+
+        });     
+    }
+
 
     jQuery(document).ready(function(){   
       jQuery(".owl-carousel.video-index").owlCarousel({

@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def queued_video?(video)
-   queue_items.map(&:video).include?(video)
+  def queued_video?(video_id)
+   queue_items.map(&:video_id).include?(video_id)
   end
 
   def follows?(user)

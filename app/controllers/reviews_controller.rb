@@ -13,6 +13,9 @@ class ReviewsController < ApplicationController
     @review.review = params[:review][:review]
     if @review.save
       set_average_rating
+      reviews = Review.where(video_id:params[:review][:video_id])
+      @reviews = reviews.select { |review| !review.review == ""}
+      @movie = Tmdb::Movie.detail(params[:review][:video_id])
       respond_to do |format|
         format.html { redirect_to :back }
         format.js { render :template => "videos/review.js.haml" }
@@ -45,7 +48,8 @@ class ReviewsController < ApplicationController
   # end
 
   def rating_array
-    reviews = Review.where(video_id:params[:id])
+    reviews = Review.where(video_id:params[:review][:video_id]
+)
     reviews.pluck(:rating)
   end
 

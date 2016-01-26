@@ -7,8 +7,8 @@ class QueueItemsController < ApplicationController
 
   def create
     @count = count + 1
-    queue = QueueItem.new(video: video, user:current_user, position: @count)
-    if current_user.queued_video?(queue.video) == false && queue.save
+    queue = QueueItem.new(video_id: movie.id, user:current_user, position: @count)
+    if current_user.queued_video?(queue.video_id) == false && queue.save
       respond_to do |format|
         format.html { redirect_to :back }
         format.js { render :template => "videos/remove_queue_button.js.haml"}
@@ -41,8 +41,8 @@ private
     current_user.queue_items.size
   end
 
-  def video
-    @video = Video.find_by(id:params[:video_id])
+  def movie
+    @movie = Tmdb::Movie.detail(params[:video_id])
   end
 
   def update_queue_items

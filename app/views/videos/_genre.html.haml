@@ -1,0 +1,9 @@
+- @genre.each do |video|
+  .video.col-md-2
+    = link_to video_path(video.id), remote: :true, method: :get  do
+      %img(src="http://image.tmdb.org/t/p/w185#{video.poster_path}" title="#{video.title}")
+
+- @genre.each do |video|
+  %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+// :javascript

@@ -1,11 +1,12 @@
 %h2= "#{@user.full_name}'s movie collection"
 .videos.row
   - @queued_videos.each  do |queue_item|
-    = link_to movie_show_page_video_path(queue_item.video), remote: :true, method: :get  do
+  - movie = Tmdb::Movie.detail(queue_item.video_id)
+    = link_to video_path(queue_item.video_id), remote: :true, method: :get  do
       .video.col-sm-2.trigger
-        %img(src="#{queue_item.video.image_url["small_img"]}" title="#{queue_item.video.title}")
+        %img(src="http://image.tmdb.org/t/p/w154#{movie.poster_path}" title="#{movie.title}")
   
   - @queued_videos.each  do |queue_item|
-    %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{queue_item.video.id}"}
+    %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{queue_item.video_id}"}
 
 = render 'shared/analytics'
