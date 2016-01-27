@@ -9,4 +9,6 @@
   - @queued_videos.each  do |queue_item|
     %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{queue_item.video_id}"}
 
+= render 'videos/modal_trigger'
+
 = render 'shared/analytics'
