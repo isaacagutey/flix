@@ -1,14 +1,8 @@
 %article.video
   .row
     .video_large_cover.col-sm-8 
-      - if backdrops.size < 2
-        %img(src="http://image.tmdb.org/t/p/w780#{backdrops.first}")
-      - else
-        .owl-carousel.video-show
-          - backdrops.each do |backdrop|
-            .item
-              %img(src="http://image.tmdb.org/t/p/w780#{backdrop}")
-          
+      %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=0"}
+               
     .video_info.col-sm-4
       %header
         %h3 
@@ -65,3 +59,11 @@
 = render 'average_rating_javascript'
 
 = render 'shared/analytics'
+
+:javascript
+  $(document).ready(function(){
+    $('#modal_close').on('click', function(){
+       $('#player')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');   
+      $
+    })  
+  })
