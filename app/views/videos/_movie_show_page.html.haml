@@ -14,7 +14,7 @@
         %h3 
           = movie.title
       %hr
-      %p.description 
+      %p.description(style="max-height:240px; overflow-y: scroll") 
         = movie.overview
       .actions
         %a.btn.btn-primary(href="") Watch Trailer

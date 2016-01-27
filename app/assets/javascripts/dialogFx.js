@@ -82,8 +82,8 @@ jQuery(document).ready(function(){
 			classie.add( self.el, 'dialog--close' );
 			body.removeClass('modal-open');
       $('#modal_close').addClass('hidden')
-			body.scrollTop(position);
-			alert(position)
+			// body.scrollTop(position);
+			// alert(position)
 			onEndAnimation( this.el.querySelector( '.dialog__content' ), function() {
 				classie.remove( self.el, 'dialog--close' );
 			} );
@@ -95,8 +95,8 @@ jQuery(document).ready(function(){
 			classie.add( this.el, 'dialog--open' );
       body.addClass('modal-open');
       $('#modal_close').removeClass('hidden')
-      position = body.scrollTop();
-      $(window).scrollTop(0);
+      // position = body.scrollTop();
+      // $(window).scrollTop(0);
      
 			// callback on open
 			this.options.onOpenDialog( this );
