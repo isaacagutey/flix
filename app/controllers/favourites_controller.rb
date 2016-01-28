@@ -27,3 +27,4 @@ class FavouritesController < ApplicationController
     @movie = Tmdb::Movie.detail(params[:video_id])
   end
 end
+
