@@ -1,0 +1,55 @@
+= render 'shared/close_button'
+%section.my_queue(style="background: #F7F7F7; padding: 20px")
+  .row
+    .col-md-12
+      %header
+        %h2 My Favourite Movies
+      %table.table
+        %thead
+          %tr
+            %th(width="10%") Title
+            %th(width="30%") Year
+            %th(width="10%") Genres
+            %th(width="20%") Director
+            %th(width="15%") Cast
+            %th(width="10%") Similar Movies
+            %th(width="30%") Box Office
+            %th(width="10%") Company
+            %th(width="20%") Rating
+            %th(width="15%") Remove
+        %tbody
+          - @favourites.each do |favourite|
+            %tr
+              %td
+                = link_to favourite.title, video_path(favourite.video_id)
+              %td
+                = favourite.year
+              %td
+                = favourite.genre
+              %td
+                = favourite.direcoter
+              %td
+                = favourite.cast
+              %td
+                = favourite.similar_movies
+              %td
+                = favourite.box_office
+               %td
+                = favourite.company
+              %td
+                = favourite.rating
+              %td
+                = link_to favourite, method: :delete do
+                  %i.fa.fa-remove
+          - @favourites.each do |favourite|
+            %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{favourite.video_id}"}  
+ 
+
+
+#movie_show_details
+
+#category_show_page
+
+= render 'videos/modal_trigger'
+
+= render 'shared/analytics'

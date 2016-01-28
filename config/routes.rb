@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get 'queue_items', to: 'queue_items#index'
   post 'add_queue_item', to: 'queue_items#create'
   post 'update_queue_items', to: 'queue_items#update'
+  get 'favourites', to: 'favourites#index'
+  post 'add_favourite', to: 'favourites#create'
+
+
   get 'people', to: 'users#people'
 
   resources :videos, only: [:show] do
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :users, only: [:create, :show]
   resources :queue_items, only: [:destroy]
+  resources :favourites, only: [:destroy]
   resources :friendships, only: [:create, :destroy]
   resources :admins, only: [:index]
   resources :reviews

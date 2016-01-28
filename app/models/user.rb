@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reviews, -> {order(created_at: :desc)}
   has_many :queue_items
+  has_many :favourites
   has_many :following_relationships, class_name: "Friendship", foreign_key: :user_id
   has_many :leading_relationships, class_name: "Friendship", foreign_key: :friend_id
   validates_presence_of :email, :password, :full_name
@@ -16,6 +17,10 @@ class User < ActiveRecord::Base
 
   def queued_video?(video_id)
    queue_items.map(&:video_id).include?(video_id)
+  end
+
+  def favourited_video?(video_id)
+    favourites.map(&:video_id).include?(video_id)
   end
 
   def follows?(user)

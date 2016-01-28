@@ -1,7 +1,16 @@
 %article.video
   .row
     .video_large_cover.col-sm-8 
-      %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=0"}
+      - if !@trailer1.present?
+        - if backdrops.size < 2
+          %img(src="http://image.tmdb.org/t/p/w780#{backdrops.first}")
+        - else
+          .owl-carousel.video-show
+            - backdrops.each do |backdrop|
+              .item
+                %img(src="http://image.tmdb.org/t/p/w780#{backdrop}")
+      - elsif @trailer1.present?
+        %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=1"}
                
     .video_info.col-sm-4
       %header
@@ -11,7 +20,9 @@
       %p.description(style="max-height:240px; overflow-y: scroll") 
         = movie.overview
       .actions
-        %a.btn.btn-primary(href="") Watch Trailer
+        %span.favourite_button
+          = link_to "Add to favourites", add_favourite_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(movie.id)
+
         %span.queue_button
           = link_to "Add to queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(movie.id)
 

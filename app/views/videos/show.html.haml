@@ -12,7 +12,8 @@
       %p.description 
         = @movie.overview
       .actions
-        %a.btn.btn-primary(href="") Watch Trailer
+        %a.btn.btn-primary
+          = link_to "Add to favourites", add_favourite_path(video_id: @movie.id), method: :post, remote: true, if !current_user.favourited_video?(@movie.id)
         %span.queue_button
           = link_to "Add to queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(@movie)
 
