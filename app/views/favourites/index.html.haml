@@ -12,31 +12,26 @@
             %th(width="25%" style="font-weight: bold") Genres
             %th(width="10%" style="font-weight: bold") Director
             %th(width="10%" style="font-weight: bold") Box Office
-            %th(width="25%" style="font-weight: bold") Company
             %th(width="5%" style="font-weight: bold") Remove
         %tbody
           - @favourites.each do |favourite|
             %tr
               %td
-                = link_to movie(favourite.video_id).title, video_path(favourite.video_id)
+                = link_to movie(favourite.video_id)["title"], video_path(favourite.video_id)
 
               %td 
-                = movie_year(movie(favourite.video_id).release_date)
+                = movie_year(movie(favourite.video_id)["release_date"])
 
               %td
-                - genres(favourite.video_id).each do |genre|
+                - movie(favourite.video_id)["genres"].each do |genre|
                   %span.badge(style="float:left; margin: 5px")
-                    = genre.name
+                    = genre["name"]
               %td
                 = director(favourite.video_id)
              
               %td 
-                = "$#{format_number(movie(favourite.video_id).revenue)}"
+                = "$#{format_number(movie(favourite.video_id)["revenue"])}"
 
-              %td
-                - production_company(favourite.video_id).each do |company|
-                  %span.badge(style="float:left; margin: 5px; background:rebeccapurple; color:white")
-                    = link_to company.name, nil, style: 'color:white'
               %td
                 = link_to favourite, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } do
                   %i.fa.fa-remove

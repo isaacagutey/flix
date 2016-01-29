@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def movie(id)
-    Tmdb::Movie.detail(id) 
+    HTTParty.get("https://api.themoviedb.org/3/movie/#{id}?api_key=b5bbd6c363545bc9f1c48c7f3195372f").parsed_response
   end
 
   def options_for_video_reviews(selected=nil)
@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def movie_year(date)
-    date.split('-').first
+    date.split('-').first if !date.nil?
   end
 
   def format_number(number)
@@ -62,28 +62,27 @@ module ApplicationHelper
   end
 
   def cast(movie_id)
-    Tmdb::Movie.cast(movie_id)
+    cast ||= Tmdb::Movie.cast(movie_id)
   end
 
   def crew(movie_id)
-    Tmdb::Movie.crew(movie_id)
+    crew ||= Tmdb::Movie.crew(movie_id)
   end
 
   def director(movie_id)
-    Tmdb::Movie.director(movie_id)[0].name
+    director ||= Tmdb::Movie.director(movie_id)[0].name
   end
 
   def similar(movie_id)
-    Tmdb::Movie.similar(movie_id)
+    similar ||= Tmdb::Movie.similar(movie_id)
   end
 
   def genres(movie_id)
-    Tmdb::Movie.detail(movie_id).genres
+   genres ||= Tmdb::Movie.detail(movie_id).genres
   end
 
   def production_company(movie_id)
-    Tmdb::Movie.detail(movie_id).production_companies.first(3)
+   @comapany ||= Tmdb::Movie.detail(movie_id).production_companies.first(3)
   end
 
 end
-
