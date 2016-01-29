@@ -21,6 +21,7 @@ class FavouritesController < ApplicationController
   def destroy
     favourite = Favourite.find(params[:id])
     favourite.destroy
+    redirect_to :back
   end
   
   def set_movie

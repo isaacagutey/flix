@@ -1,45 +1,44 @@
 = render 'shared/close_button'
-%section.my_queue(style="background: #F7F7F7; padding: 20px")
-  .row
-    .col-md-12
-      %header
-        %h2 My Favourite Movies
-      %table.table
+%section.my_favourites(style=" padding: 20px; width: 100%")
+  .row(style="width: 100%; padding: 0; margin:0")
+    %header(style="margin-bottom: 20px")
+      %h2(style="color: #a90329; font-size: 1.3em") Favourite Movies
+    .col-md-12(style="background: #F7F7F7; width: 100%; margin: 0 auto; padding-top: 20px")
+      %table.table(style="background:#F7F7F7; padding: 20px; width: 100%; ")
         %thead
           %tr
-            %th(width="10%") Title
-            %th(width="30%") Year
-            %th(width="10%") Genres
-            %th(width="20%") Director
-            %th(width="15%") Cast
-            %th(width="10%") Similar Movies
-            %th(width="30%") Box Office
-            %th(width="10%") Company
-            %th(width="20%") Rating
-            %th(width="15%") Remove
+            %th(width="15%" style="font-weight: bold") Title
+            %th(width="5%" style="font-weight: bold") Year
+            %th(width="25%" style="font-weight: bold") Genres
+            %th(width="10%" style="font-weight: bold") Director
+            %th(width="10%" style="font-weight: bold") Box Office
+            %th(width="25%" style="font-weight: bold") Company
+            %th(width="5%" style="font-weight: bold") Remove
         %tbody
           - @favourites.each do |favourite|
             %tr
               %td
-                = link_to favourite.title, video_path(favourite.video_id)
+                = link_to movie(favourite.video_id).title, video_path(favourite.video_id)
+
+              %td 
+                = movie_year(movie(favourite.video_id).release_date)
+
               %td
-                = favourite.year
+                - genres(favourite.video_id).each do |genre|
+                  %span.badge(style="float:left; margin: 5px")
+                    = genre.name
               %td
-                = favourite.genre
+                = director(favourite.video_id)
+             
+              %td 
+                = "$#{format_number(movie(favourite.video_id).revenue)}"
+
               %td
-                = favourite.direcoter
+                - production_company(favourite.video_id).each do |company|
+                  %span.badge(style="float:left; margin: 5px; background:rebeccapurple; color:white")
+                    = link_to company.name, nil, style: 'color:white'
               %td
-                = favourite.cast
-              %td
-                = favourite.similar_movies
-              %td
-                = favourite.box_office
-               %td
-                = favourite.company
-              %td
-                = favourite.rating
-              %td
-                = link_to favourite, method: :delete do
+                = link_to favourite, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } do
                   %i.fa.fa-remove
           - @favourites.each do |favourite|
             %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{favourite.video_id}"}  

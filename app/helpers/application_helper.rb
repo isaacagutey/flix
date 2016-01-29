@@ -30,7 +30,15 @@ module ApplicationHelper
     date_time.strftime("%a %B %d, %Y")
   end
 
-  def genres
+  def movie_year(date)
+    date.split('-').first
+  end
+
+  def format_number(number)
+    number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+  end
+
+  def all_genres
     @animation = 16
     @action = 28
     @adventure = 12
@@ -51,6 +59,30 @@ module ApplicationHelper
     @drama = 18
     @family = 10751
     @fantasy = 14
+  end
+
+  def cast(movie_id)
+    Tmdb::Movie.cast(movie_id)
+  end
+
+  def crew(movie_id)
+    Tmdb::Movie.crew(movie_id)
+  end
+
+  def director(movie_id)
+    Tmdb::Movie.director(movie_id)[0].name
+  end
+
+  def similar(movie_id)
+    Tmdb::Movie.similar(movie_id)
+  end
+
+  def genres(movie_id)
+    Tmdb::Movie.detail(movie_id).genres
+  end
+
+  def production_company(movie_id)
+    Tmdb::Movie.detail(movie_id).production_companies.first(3)
   end
 
 end

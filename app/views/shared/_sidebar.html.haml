@@ -9,20 +9,18 @@
       = link_to queue_items_path do
         %img(src="http://www.lifeisajourney.org/wp-content/uploads/2013/03/Watch-N-Listen-Red-Movie-Icon1.png" width="34" height="34")
         %span
-          Queue
+          My Queue
     %li
       = link_to people_path do
         = image_tag 'people.svg', width:"34", height:"34"
         %span
-          Mentors
+          Following
     %li
-      %img(src="http://matrimonialz.com/icon/contact.png" width="34" height="34")
-      %span
-        Likes
-    %li
-      %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminder_g60_24dp_r7.png")
-      %span
-        Favourites
+      = link_to favourites_path do
+        %img(src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/512/favourite512x512.png" width="34" height="34")
+        %span
+          Favourites
+    
     %li
       %img(src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_done_clr_24dp_r4.png")
       %span
