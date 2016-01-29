@@ -14,17 +14,17 @@
                
     .video_info.col-sm-4
       %header
-        %h3 
+        %h3(style="font-weight: bold; color:rebeccapurple")
           = movie.title
       %hr
-      %p.description(style="max-height:240px; overflow-y: scroll") 
+      %p.description(style="max-height:240px; overflow-y: scroll; font-family: monospace") 
         = movie.overview
       .actions
         %span.favourite_button
-          = link_to "Add to favourites", add_favourite_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(movie.id)
+          = link_to " + favourites", add_favourite_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(movie.id)
 
         %span.queue_button
-          = link_to "Add to queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-default" if !current_user.queued_video?(movie.id)
+          = link_to " +  queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(movie.id)
 
 .video_show_sub_links
   %ul.nav.nav-tabs

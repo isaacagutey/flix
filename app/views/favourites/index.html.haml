@@ -15,28 +15,29 @@
             %th(width="5%" style="font-weight: bold") Remove
         %tbody
           - @favourites.each do |favourite|
-            %tr
-              %td
-                = link_to movie(favourite.video_id)["title"], video_path(favourite.video_id)
+            - cache(favourite) do
+              %tr
+                %td
+                  = link_to movie(favourite.video_id)["title"], video_path(favourite.video_id)
 
-              %td 
-                = movie_year(movie(favourite.video_id)["release_date"])
+                %td 
+                  = movie_year(movie(favourite.video_id)["release_date"])
 
-              %td
-                - movie(favourite.video_id)["genres"].each do |genre|
-                  %span.badge(style="float:left; margin: 5px")
-                    = genre["name"]
-              %td
-                = director(favourite.video_id)
-             
-              %td 
-                = "$#{format_number(movie(favourite.video_id)["revenue"])}"
+                %td
+                  - movie(favourite.video_id)["genres"].each do |genre|
+                    %span.badge(style="float:left; margin: 5px")
+                      = genre["name"]
+                %td
+                  = director(favourite.video_id)
+               
+                %td 
+                  = "$#{format_number(movie(favourite.video_id)["revenue"])}"
 
-              %td
-                = link_to favourite, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } do
-                  %i.fa.fa-remove
-          - @favourites.each do |favourite|
-            %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{favourite.video_id}"}  
+                %td
+                  = link_to favourite, method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } do
+                    %i.fa.fa-remove
+            - @favourites.each do |favourite|
+              %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{favourite.video_id}"}  
  
 
 

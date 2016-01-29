@@ -15,6 +15,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'kaminari'
 gem 'themoviedb-api'
+gem 'dalli'
 
 group :development do
   gem 'thin'

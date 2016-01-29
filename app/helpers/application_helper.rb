@@ -15,7 +15,9 @@ module ApplicationHelper
   end
 
   def movie(id)
-    HTTParty.get("https://api.themoviedb.org/3/movie/#{id}?api_key=b5bbd6c363545bc9f1c48c7f3195372f").parsed_response
+    # Rails.cache.fetch("movie") do
+     movie ||= HTTParty.get("https://api.themoviedb.org/3/movie/#{id}?api_key=b5bbd6c363545bc9f1c48c7f3195372f").parsed_response
+    # end
   end
 
   def options_for_video_reviews(selected=nil)
@@ -62,27 +64,27 @@ module ApplicationHelper
   end
 
   def cast(movie_id)
-    cast ||= Tmdb::Movie.cast(movie_id)
+    Rails.cache.fetch('cast') { Tmdb::Movie.cast(movie_id) }  
   end
 
   def crew(movie_id)
-    crew ||= Tmdb::Movie.crew(movie_id)
+    Rails.cache.fetch('crew') { Tmdb::Movie.crew(movie_id) }
   end
 
   def director(movie_id)
-    director ||= Tmdb::Movie.director(movie_id)[0].name
+    Tmdb::Movie.director(movie_id)[0].name 
   end
 
   def similar(movie_id)
-    similar ||= Tmdb::Movie.similar(movie_id)
+    Rails.cache.fetch('similar') { Tmdb::Movie.similar(movie_id) }
   end
 
   def genres(movie_id)
-   genres ||= Tmdb::Movie.detail(movie_id).genres
+    Rails.cache.fetch('genres') { Tmdb::Movie.detail(movie_id).genres }
   end
 
   def production_company(movie_id)
-   @comapany ||= Tmdb::Movie.detail(movie_id).production_companies.first(3)
+    Rails.cache.fetch('production_company') { Tmdb::Movie.detail(movie_id).production_companies.first(3) }
   end
 
 end
