@@ -123,7 +123,7 @@ class VideosController < ApplicationController
     @director =Tmdb::Movie.director(params[:id])
     @trailer1 = Tmdb::Movie.videos(params[:id]).first.key  if Tmdb::Movie.videos(params[:id]).present?
     @trailer2 = Tmdb::Movie.videos(params[:id])[1].key if Tmdb::Movie.videos(params[:id])[1].present?
-    @similar = Tmdb::Movie.similar(params[:id])
+    @similar = Tmdb::Movie.similar(params[:id]).results
   end
 
 end

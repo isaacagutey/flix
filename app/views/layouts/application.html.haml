@@ -41,79 +41,40 @@
     $(document).ready(function(){   
       var owl = $(".owl-carousel.video-index");
       owl.owlCarousel({
-        items : 6, //10 items above 1000px browser width
-        itemsDesktop : [1000,6], //5 items between 1000px and 901px
+        items : 5, //10 items above 1000px browser width
+        itemsDesktop : [1000,5], //5 items between 1000px and 901px
         itemsDesktopSmall : [900,4], // betweem 900px and 601px
         itemsTablet: [700,3], //2 items between 600 and 0
         itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
         loop:true,
         nav:true,
         margin:10,
-        // autoplay:true,
-        // autoplayHoverPause:true,
-        // responsive:{
-        //   0:{
-        //       items:2
-        //   },
-        //   600:{
-        //       items:4
-        //   },            
-        //   960:{
-        //       items:6
-        //   },
-        //   1200:{
-        //       items:7
-        //   }
-        // }
+       
       });
       // 
       owl.on('mousewheel', '.owl-wrapper', function (e) {
         $(this).trigger('owl.play',5000);
       });
-      //  var owl_similar = $(".owl-carousel.video-similar");
-      //   owl_similar.owlCarousel({
-      //   items : 6, //10 items above 1000px browser width
-      //   itemsDesktop : [1000,6], //5 items between 1000px and 901px
-      //   itemsDesktopSmall : [900,4], // betweem 900px and 601px
-      //   itemsTablet: [700,3], //2 items between 600 and 0
-      //   itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
-      //   loop:true,
-      //   nav:true,
-      //   margin:10,
-      //   // autoplay:true,
-      //   // autoplayHoverPause:true,
-      //   // responsive:{
-      //   //   0:{
-      //   //       items:2
-      //   //   },
-      //   //   600:{
-      //   //       items:4
-      //   //   },            
-      //   //   960:{
-      //   //       items:6
-      //   //   },
-      //   //   1200:{
-      //   //       items:7
-      //   //   }
-      //   // }
-      // });
-      // owl_similar.on('mousewheel', '.owl-wrapper', function (e) {
-      //   $(this).trigger('owl.play',5000);
-      // });
+      
       $(".owl-carousel.video-id-hidden").owlCarousel({
             dots:false,
       });
+      $("p.overview").scrollbar();
       $(".owl-carousel.video-show").owlCarousel({
+        items : 1, //10 items above 1000px browser width
+        itemsDesktop : [1000,1], //5 items between 1000px and 901px
+        itemsDesktopSmall : [900,1], // betweem 900px and 601px
+        itemsTablet: [700,1], //2 items between 600 and 0
+        itemsMobile :[510,1], // itemsMobile disabled - inherit from itemsTablet option
         loop:true,
-        margin:5,
-        autoplayHoverPause:true,
+        nav:true,
         dots:true,
-        responsive:{
-            0:{
-                items:1,
-            }
-          }
+        margin:10,
       });
+
+      $(".owl-carousel.video-show").on('mousewheel', '.owl-wrapper', function (e) {
+        $(this).trigger('owl.play',5000);
+      }); 
     });
 
    

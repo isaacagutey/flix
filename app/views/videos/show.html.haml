@@ -1,10 +1,10 @@
 = render 'shared/close_button'
 %article.video
   .row
-    .video_large_cover.col-md-12 
+    .video_large_cover.col-md-12(style="padding:0") 
       - if !@trailer1.present?
         - if @backdrops.size < 2
-          %img(src="http://image.tmdb.org/t/p/w780#{backdrops.first}")
+          %img(src="http://image.tmdb.org/t/p/w780#{@backdrops.first}")
         - else
           .owl-carousel.video-show
             - @backdrops.each do |backdrop|
@@ -13,7 +13,7 @@
       - elsif @trailer1.present?
         %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=1"}
   
-  .row             
+  .row(style="background-color:palegreen")             
     .video_info.col-md-4
       %header
         %h3(style="font-weight: bold; color:rebeccapurple")
@@ -26,18 +26,19 @@
           %span.queue_button
             = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(@movie.id)
       / %hr
-      %p.description(style="height:240px; overflow-y: scroll; font-family: monospace") 
+      %p.overview(style="height:250px; overflow-y: scroll; font-family: serif; color:black; padding: 10px; line-height: 1.5em") 
         = @movie.overview
-    .col-md-8.similar(style="height:240px") 
+    .col-md-8.similar(style="height:250px; background-color: teal") 
+      %h3(style="color:white; padding-left:10px") Similar Movies
       .owl-carousel.video-similar
-        - @similar.results.each do |video|
-          = link_to video_path(video.id), remote: :true do
+        - @similar.each do |video|
+          = link_to video_path(video.id) do
             .item
               .video.col-sm-2.trigger(style="width:135px; height: 170px")
                 %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}" style="width:120px; height: 155px")
 
       .owl-carousel.video-id-hidden
-        - @similar.results.each do |video|
+        - @similar.each do |video|
           %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
@@ -91,20 +92,21 @@
 
 = render 'shared/analytics'
 
-// :javascript
-//   $(document).ready(function(){
-//     var owl =  $(".owl-carousel.video-similar")
-//     owl_similar.owlCarousel({
-//       margin:2,
-//       items : 6, //10 items above 1000px browser width
-//       itemsDesktop : [1000,6], //5 items between 1000px and 901px
-//       itemsDesktopSmall : [900,4], // betweem 900px and 601px
-//       itemsTablet: [700,3], //2 items between 600 and 0
-//       itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
-//       loop:true,
-//       nav:true,
-//       margin:10,
-//     });
-//     owl_similar.trigger('owl.play',10000); 
-//   })
+= render 'similar_videos_js.html.haml'
 
+:javascript
+  $("p.overview").scrollbar();
+  $(".owl-carousel.video-show").owlCarousel({
+    items : 1, //10 items above 1000px browser width
+    itemsDesktop : [1000,1], //5 items between 1000px and 901px
+    itemsDesktopSmall : [900,1], // betweem 900px and 601px
+    itemsTablet: [700,1], //2 items between 600 and 0
+    itemsMobile :[510,1], // itemsMobile disabled - inherit from itemsTablet option
+    loop:true,
+    nav:true,
+    margin:10,
+  });
+
+  $(".owl-carousel.video-show").on('mousewheel', '.owl-wrapper', function (e) {
+    $(this).trigger('owl.play',5000);
+  }); 

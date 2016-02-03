@@ -70,8 +70,8 @@
  
 /*************** SIMPLE INNER SCROLLBAR ***************/
  
- /*.dialog__content > .scroll-element,
- .dialog__content > .scroll-element div
+ p.overview > .scroll-element,
+ p.overview > .scroll-element div
 {
     border: none;
     margin: 0;
@@ -80,7 +80,7 @@
     z-index: 10;
 }
  
- .dialog__content > .scroll-element div {
+ p.overview > .scroll-element div {
     display: block;
     height: 100%;
     left: 0;
@@ -88,57 +88,57 @@
     width: 100%;
 }
  
- .dialog__content > .scroll-element.scroll-x {
+ p.overview > .scroll-element.scroll-x {
     bottom: 2px;
     height: 8px;
     left: 0;
     width: 100%;
 }
  
- .dialog__content > .scroll-element.scroll-y {
+ p.overview > .scroll-element.scroll-y {
     height: 100%;
     right: 2px;
     top: 0;
     width: 8px;
 }
  
- .dialog__content > .scroll-element .scroll-element_outer {
+ p.overview > .scroll-element .scroll-element_outer {
     overflow: hidden;
 }
  
- .dialog__content > .scroll-element .scroll-element_outer,
- .dialog__content > .scroll-element .scroll-element_track,
+ p.overview > .scroll-element .scroll-element_outer,
+ p.overview > .scroll-element .scroll-element_track,
   > .scroll-element .scroll-bar {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
  
- .dialog__content  > .scroll-element .scroll-element_track {
+ p.overview  > .scroll-element .scroll-element_track {
     opacity: 0;
  }
- .dialog__content  > .scroll-element .scroll-bar {
+ p.overview  > .scroll-element .scroll-bar {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
     filter: alpha(opacity=40);
     opacity: 0.4;
 }
  
- .dialog__content  > .scroll-element .scroll-element_track { background-color: #e0e0e0; }
- .dialog__content  > .scroll-element .scroll-bar { background-color: #c2c2c2; }
- .dialog__content  > .scroll-element:hover .scroll-bar { background-color: #919191; }
- .dialog__content  > .scroll-element.scroll-draggable .scroll-bar { background-color: #919191; }
+ p.overview  > .scroll-element .scroll-element_track { background-color: #e0e0e0; }
+ p.overview  > .scroll-element .scroll-bar { background-color: #c2c2c2; }
+ p.overview  > .scroll-element:hover .scroll-bar { background-color: #919191; }
+ p.overview  > .scroll-element.scroll-draggable .scroll-bar { background-color: #919191; }
  
 
  
- .dialog__content  > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -12px; }
- .dialog__content  > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -12px; }
+ p.overview  > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -12px; }
+ p.overview  > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -12px; }
  
  
- .dialog__content  > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -12px; }
- .dialog__content  > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -12px; }
+ p.overview  > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -12px; }
+ p.overview  > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -12px; }
 
 
-*/
+
 
  /*************** SIMPLE INNER SCROLLBAR ***************/
  
