@@ -1,6 +1,6 @@
 %article.video
   .row
-    .video_large_cover.col-sm-8 
+    .video_large_cover.col-md-12 
       - if !@trailer1.present?
         - if backdrops.size < 2
           %img(src="http://image.tmdb.org/t/p/w780#{backdrops.first}")
@@ -11,20 +11,35 @@
                 %img(src="http://image.tmdb.org/t/p/w780#{backdrop}")
       - elsif @trailer1.present?
         %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=1"}
-               
-    .video_info.col-sm-4
+  
+  .row             
+    .video_info.col-md-4
       %header
         %h3(style="font-weight: bold; color:rebeccapurple")
           = movie.title
-      %hr
-      %p.description(style="max-height:240px; overflow-y: scroll; font-family: monospace") 
-        = movie.overview
-      .actions
-        %span.favourite_button
-          = link_to " + favourites", add_favourite_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(movie.id)
 
-        %span.queue_button
-          = link_to " +  queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(movie.id)
+        .actions
+          %span.favourite_button
+            = link_to " + favourites", add_favourite_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(movie.id)
+
+          %span.queue_button
+            = link_to " +  queue", add_queue_item_path(video_id: movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(movie.id)
+      / %hr
+      %p.description(style="height:240px; overflow-y: scroll; font-family: monospace") 
+        = movie.overview
+    .col-md-8.similar(style="height:240px") 
+      .owl-carousel.video-similar
+        - @similar.results.each do |video|
+          = link_to video_path(video.id), remote: true do
+            .item
+              .video.col-sm-2.trigger(style="width:135px; height: 170px")
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}" style="width:120px; height: 155px")
+
+      .owl-carousel.video-id-hidden
+        - @similar.results.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
 
 .video_show_sub_links
   %ul.nav.nav-tabs
@@ -67,14 +82,29 @@
       - @reviews.each do |review|
         = render 'reviews/review', review: review
 
+
 = render 'average_rating_javascript'
 
 = render 'shared/analytics'
 
 :javascript
   $(document).ready(function(){
+    var owl =  $(".owl-carousel.video-similar")
+    owl_similar.owlCarousel({
+      margin:2,
+      items : 6, //10 items above 1000px browser width
+      itemsDesktop : [1000,6], //5 items between 1000px and 901px
+      itemsDesktopSmall : [900,4], // betweem 900px and 601px
+      itemsTablet: [700,3], //2 items between 600 and 0
+      itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
+      loop:true,
+      nav:true,
+      margin:10,
+    });
+    owl_similar.trigger('owl.play',10000);
     $('#modal_close').on('click', function(){
        $('#player')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');   
       $
     })  
   })
+

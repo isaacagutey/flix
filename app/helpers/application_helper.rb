@@ -64,27 +64,31 @@ module ApplicationHelper
   end
 
   def cast(movie_id)
-    Rails.cache.fetch('cast') { Tmdb::Movie.cast(movie_id) }  
+    Tmdb::Movie.cast(movie_id) 
   end
 
   def crew(movie_id)
-    Rails.cache.fetch('crew') { Tmdb::Movie.crew(movie_id) }
+    Tmdb::Movie.crew(movie_id) 
   end
 
   def director(movie_id)
-    Tmdb::Movie.director(movie_id)[0].name 
+    # Tmdb::Movie.director(movie_id)[0].name 
+    director = HTTParty.get("https://api.themoviedb.org/3/movie/#{movie_id}/credits?api_key=b5bbd6c363545bc9f1c48c7f3195372f").parsed_response['crew']
+    if !director.nil?
+      director.select{ |x| x['job'] == 'Director' }.first['name']
+    end
   end
 
   def similar(movie_id)
-    Rails.cache.fetch('similar') { Tmdb::Movie.similar(movie_id) }
+    Tmdb::Movie.similar(movie_id) 
   end
 
   def genres(movie_id)
-    Rails.cache.fetch('genres') { Tmdb::Movie.detail(movie_id).genres }
+    Tmdb::Movie.detail(movie_id).genres 
   end
 
   def production_company(movie_id)
-    Rails.cache.fetch('production_company') { Tmdb::Movie.detail(movie_id).production_companies.first(3) }
+    Tmdb::Movie.detail(movie_id).production_companies.first(3) 
   end
 
 end

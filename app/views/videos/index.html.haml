@@ -6,7 +6,6 @@
 /     %span.category_page_trigger.hidden{"data-dialog" => "category_show_page", :id => "category_#{category.id}"}
 
 
-
 / FANTASY
 .movies-index
   = link_to 'Fantasy', genre_show_video_path(@fantasy.id, genre: "Fantasy"), class:"category_link"
@@ -24,7 +23,6 @@
 
 
 / ANIMATIONS
-
 .movies-index
   = link_to 'Animations', genre_show_video_path(@animations.id, genre: "Animations"), class:"category_link"
   .row
@@ -326,11 +324,10 @@
         %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
+= render 'modal_trigger'
 
 #movie_show_details
 
 #category_show_page
-
-= render 'modal_trigger'
 
 = render 'shared/analytics'

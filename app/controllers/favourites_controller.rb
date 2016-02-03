@@ -3,6 +3,7 @@ class FavouritesController < ApplicationController
 
   def index
     @favourites = Favourite.all
+    # expires_in 5.minutes, public: true
   end
 
   def create

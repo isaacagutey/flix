@@ -11,7 +11,7 @@
               .col-sm-2
                 %p
                   - if !review.video_id.nil?
-                    = link_to movie(review.video_id).title, video_path(review.video_id), remote: true
+                    = link_to movie(review.video_id)["title"], video_path(review.video_id), remote: true
                 %span(class="stars" id="star_#{review.id}" value="#{review.rating}")
               .col-sm-8
                 %p= review.review

@@ -28,6 +28,7 @@
       %hr
       %h3.footer_text &copy 2016 plsma
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  / = javascript_include_tag 'jquery.mousewheel.min', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'dialogFx', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.10/jquery.scrollbar.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
@@ -38,28 +39,67 @@
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
    
     $(document).ready(function(){   
-      $(".owl-carousel.video-index").owlCarousel({
-          margin:2,
-          autoplay:true,
-          autoplayHoverPause:true,
-          dots:false,
-          nav:true,
-          lazyLoad : true,
-          responsive:{
-              0:{
-                  items:2,
-              },
-              500:{
-                  items:3,
-              },
-              700:{
-                  items:4,
-              },
-              1130:{
-                  items:6,
-              }
-          }
-        });
+      var owl = $(".owl-carousel.video-index");
+      owl.owlCarousel({
+        items : 6, //10 items above 1000px browser width
+        itemsDesktop : [1000,6], //5 items between 1000px and 901px
+        itemsDesktopSmall : [900,4], // betweem 900px and 601px
+        itemsTablet: [700,3], //2 items between 600 and 0
+        itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
+        loop:true,
+        nav:true,
+        margin:10,
+        // autoplay:true,
+        // autoplayHoverPause:true,
+        // responsive:{
+        //   0:{
+        //       items:2
+        //   },
+        //   600:{
+        //       items:4
+        //   },            
+        //   960:{
+        //       items:6
+        //   },
+        //   1200:{
+        //       items:7
+        //   }
+        // }
+      });
+      // 
+      owl.on('mousewheel', '.owl-wrapper', function (e) {
+        $(this).trigger('owl.play',5000);
+      });
+      //  var owl_similar = $(".owl-carousel.video-similar");
+      //   owl_similar.owlCarousel({
+      //   items : 6, //10 items above 1000px browser width
+      //   itemsDesktop : [1000,6], //5 items between 1000px and 901px
+      //   itemsDesktopSmall : [900,4], // betweem 900px and 601px
+      //   itemsTablet: [700,3], //2 items between 600 and 0
+      //   itemsMobile :[510,2], // itemsMobile disabled - inherit from itemsTablet option
+      //   loop:true,
+      //   nav:true,
+      //   margin:10,
+      //   // autoplay:true,
+      //   // autoplayHoverPause:true,
+      //   // responsive:{
+      //   //   0:{
+      //   //       items:2
+      //   //   },
+      //   //   600:{
+      //   //       items:4
+      //   //   },            
+      //   //   960:{
+      //   //       items:6
+      //   //   },
+      //   //   1200:{
+      //   //       items:7
+      //   //   }
+      //   // }
+      // });
+      // owl_similar.on('mousewheel', '.owl-wrapper', function (e) {
+      //   $(this).trigger('owl.play',5000);
+      // });
       $(".owl-carousel.video-id-hidden").owlCarousel({
             dots:false,
       });

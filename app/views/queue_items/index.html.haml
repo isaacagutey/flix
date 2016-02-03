@@ -19,7 +19,7 @@
                 = hidden_field_tag "queue_items[][id]", queue_item.id
                 %td= text_field_tag "queue_items[][position]", queue_item.position, class:'form-control'
                 %td
-                  = link_to movie(queue_item.video_id).title, video_path(queue_item.video_id), remote: true
+                  = link_to movie(queue_item.video_id)["title"], video_path(queue_item.video_id), remote: true
                 %td
                   = button_to "Play", nil, class: "btn btn-default"
                 %td
