@@ -4,6 +4,7 @@ class VideosController < ApplicationController
   before_action :get_backdrops, only: [:show, :movie_show_page]
   before_action :set_average_rating, only: [:movie_show_page, :show]
   before_action :require_user, only: [:index, :show, :search]
+  before_action :set_similar_movies, only: [:show]
  
   def index
     @animations = animation
@@ -98,7 +99,7 @@ class VideosController < ApplicationController
 
   end
 
- private
+private
 
   def set_movie
     @movie = Tmdb::Movie.detail(params[:id])
@@ -124,6 +125,13 @@ class VideosController < ApplicationController
     @trailer1 = Tmdb::Movie.videos(params[:id]).first.key  if Tmdb::Movie.videos(params[:id]).present?
     @trailer2 = Tmdb::Movie.videos(params[:id])[1].key if Tmdb::Movie.videos(params[:id])[1].present?
     @similar = Tmdb::Movie.similar(params[:id]).results
+    # binding.pry
+  end
+
+  def set_similar_movies
+    genre_id = Tmdb::Movie.detail(params[:id]).genres.first.id
+    @similar_genre_movies = Tmdb::Genre.movies(genre_id).results
+    # binding.pry
   end
 
 end

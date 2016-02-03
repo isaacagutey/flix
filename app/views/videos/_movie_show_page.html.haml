@@ -30,15 +30,28 @@
     .col-md-8.similar(style="height:250px; background-color: teal") 
       %h3(style="color:white; padding-left: 10px") Similar Movies
       .owl-carousel.video-similar
-        - @similar.each do |video|
-          = link_to video_path(video.id) do
-            .item
-              .video.col-sm-2.trigger(style="width:135px; height: 170px")
-                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}" style="width:120px; height: 155px")
+        - if !@similar.empty?
+          - @similar.each do |video|
+            = link_to video_path(video.id) do
+              .item
+                .video.col-sm-2.trigger(style="width:135px; height: 170px")
+                  %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}" style="width:120px; height: 155px")
+        - else
+          - @similar_genre_movies.each do |video|
+            = link_to video_path(video.id) do
+              .item
+                .video.col-sm-2.trigger(style="width:135px; height: 170px")
+                  %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}" style="width:120px; height: 155px")
+            
 
       .owl-carousel.video-id-hidden
-        - @similar.each do |video|
-          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+        - if !@similar.empty?
+          - @similar.each do |video|
+            %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+        - else 
+          - @similar_genre_movies.each do |video|
+            %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+          
 
 
 
