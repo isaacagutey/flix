@@ -14,15 +14,6 @@
         %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=1"}
   
   .row          
-    / .video_info.col-md-4
-    /   %header
-    /     %h3(style="font-weight: bold; color:rebeccapurple")
-    /       = @movie.title
-
-       
-    /   / %hr
-    /   %p.overview(style="height:250px; overflow-y: scroll; font-family: serif; color:black; padding: 10px; line-height: 1.5em") 
-    /     = @movie.overview
     .col-md-12.similar(style="height:250px;margin-top:-5px") 
       %h3(style="color:white; padding-left:10px") Similar Movies
       .owl-carousel.video-similar

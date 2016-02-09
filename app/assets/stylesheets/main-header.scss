@@ -5,7 +5,7 @@
   left: 0;
   height: 45px;
   width: 100%;
-  background: #8f0222;
+  background: rgba(0,0,0,0.8);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -172,7 +172,7 @@
   border: none;
   padding-left: 2.6em;
   border-radius: 0;
-  background-color: #a90329;
+  // background-color: rgba(69,72,77,1);
   color: #ffffff;
  /* -webkit-appearance: none;
   -moz-appearance: none;
@@ -245,7 +245,7 @@
     border: none;
     padding-left: 2.6em;
     border-radius: 0;
-    background-color: #a90329;
+    background-color: transparent;
     color: #ffffff;
   }
   .cd-search input::-webkit-input-placeholder {

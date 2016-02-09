@@ -5,12 +5,12 @@
         .item
           %img(src="http://image.tmdb.org/t/p/w780#{backdrop}" style="width:100%; height:100vh; background-size:cover")
   .movie-details(style="position:absolute; width:100%; height: 100vh; margin-top:-100vh")
-    .row(style="padding:10px;background: rgba(225,225,225, 0.5)")
+    .row(style="padding:10px;background: rgba(225,225,225, 0.5); margin:0")
       .video.col-sm-2
         %img(src="http://image.tmdb.org/t/p/w154#{@movie.poster_path}" title="#{@movie.title}")
         
       %div(style="padding-top: 20px; color:black")
-        %h2(style="padding:10px; font-size: 2em")
+        %h2.movie_title
           %span= @movie.title
           .actions(style="margin-left:10px")
             %span.favourite_button
