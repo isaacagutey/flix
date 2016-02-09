@@ -13,22 +13,17 @@
       - elsif @trailer1.present?
         %iframe#player{:allowfullscreen => "true", :allowscriptaccess => "always", :frameborder => "0", :src => "http://www.youtube.com/embed/#{@trailer1}?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&modestbranding=1&autohide=1&showinfo=0&autoplay=1&loop=1&playlist=#{@trailer2.present? ? @trailer2 : @trailer1 }&controls=1"}
   
-  .row(style="background-color:palegreen")             
-    .video_info.col-md-4
-      %header
-        %h3(style="font-weight: bold; color:rebeccapurple")
-          = @movie.title
+  .row          
+    / .video_info.col-md-4
+    /   %header
+    /     %h3(style="font-weight: bold; color:rebeccapurple")
+    /       = @movie.title
 
-        .actions
-          %span.favourite_button
-            = link_to " + favourites", add_favourite_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(@movie.id)
-
-          %span.queue_button
-            = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(@movie.id)
-      / %hr
-      %p.overview(style="height:250px; overflow-y: scroll; font-family: serif; color:black; padding: 10px; line-height: 1.5em") 
-        = @movie.overview
-    .col-md-8.similar(style="height:250px; background-color: teal") 
+       
+    /   / %hr
+    /   %p.overview(style="height:250px; overflow-y: scroll; font-family: serif; color:black; padding: 10px; line-height: 1.5em") 
+    /     = @movie.overview
+    .col-md-12.similar(style="height:250px;margin-top:-5px") 
       %h3(style="color:white; padding-left:10px") Similar Movies
       .owl-carousel.video-similar
         - if !@similar.empty?
@@ -56,22 +51,25 @@
 
 .video_show_sub_links
   %ul.nav.nav-tabs
-    - if params[:tab] == "reviews" || params[:tab] == nil
+    - if params[:tab]== "info" || params[:tab] == nil
+      %li.active= link_to "Info", video_path(@movie.id, tab:"info")
+    - else
+      %li= link_to "Info", video_path(@movie.id, tab:"info") 
+
+
+    - if params[:tab] == "reviews" 
       %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
     - else
       %li= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
 
 
-    / - if params[:tab]== "stats"
-    /   %li.active= link_to "Stats", video_path(video, tab:"stats")
-    / - else
-    /   %li= link_to "Stats", video_path(video, tab:"stats")
+
 
    
 .video_show_sub_container
-  - if params[:tab] == "stats"
-    %p yess i'm nil
-  - else
+  - if params[:tab] == "info" || params[:tab] == nil
+    = render 'videos/movies_info'
+  - elsif params[:tab] = "reviews"
     %section#cd-timeline.cd-container
       .row
         .col-sm-10.col-sm-offset-1

@@ -1,0 +1,38 @@
+.movie-info-container(style="display:block")
+  .movies_info(style="padding: 0; margin:0; height:100vh")
+    .owl-carousel.video-info(style="overflow:hidden")
+      - @backdrops.each do |backdrop|
+        .item
+          %img(src="http://image.tmdb.org/t/p/w780#{backdrop}" style="width:100%; height:100vh; background-size:cover")
+  .movie-details(style="position:absolute; width:100%; height: 100vh; margin-top:-100vh")
+    .row(style="padding:10px;background: rgba(225,225,225, 0.5)")
+      .video.col-sm-2
+        %img(src="http://image.tmdb.org/t/p/w154#{@movie.poster_path}" title="#{@movie.title}")
+        
+      %div(style="padding-top: 20px; color:black")
+        %h2(style="padding:10px; font-size: 2em")
+          %span= @movie.title
+          .actions(style="margin-left:10px")
+            %span.favourite_button
+              = link_to " + favourites", add_favourite_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(@movie.id)
+
+            %span.queue_button
+              = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(@movie.id)
+        %hr(style="margin-top:5px")
+        %p(style="line-height:1.5em")= @movie.overview
+    .row
+      %div
+    .row
+      %div
+
+:javascript
+  $(document).ready(function(){
+    var owl = $(".video-info");
+    owl.owlCarousel({
+      navigation : false,
+      singleItem : true,
+      transitionStyle : "fade"
+    });
+    owl.trigger('owl.play',10000);
+  })
+ 
