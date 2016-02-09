@@ -17,15 +17,14 @@
           = yield
         .cd-filter
           = render 'shared/sidebar'
-        %a.cd-nav-trigger{:href => "#"}
-      %hr
+      %hr(style="margin-top:0")
       %h3.footer_text &copy 2016 plsma
   - else
     %body.front_page
       %section.content.clearfix
         = render 'shared/messages'
         = yield
-      %hr
+      %hr(style="margin-top:0")
       %h3.footer_text &copy 2016 plsma
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   / = javascript_include_tag 'jquery.mousewheel.min', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true

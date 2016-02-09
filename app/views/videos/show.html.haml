@@ -15,7 +15,7 @@
   
   .row          
     .col-md-12.similar(style="height:250px;margin-top:-5px") 
-      %h3(style="color:white; padding-left:10px") Similar Movies
+      %h3(style="color:white; padding:10px 0 0 10px") Similar Movies
       .owl-carousel.video-similar
         - if !@similar.empty?
           - @similar.each do |video|
@@ -52,9 +52,6 @@
       %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
     - else
       %li= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
-
-
-
 
    
 .video_show_sub_container
