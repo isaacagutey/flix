@@ -5,11 +5,11 @@
         .item
           %img(src="http://image.tmdb.org/t/p/w780#{backdrop}" style="width:101%; height:100vh; background-size:cover")
   .movie-details(style="position:absolute; width:100%; height: 100vh; margin-top:-100vh")
-    .row(style="padding:10px;background: rgba(225,225,225, 0.7); margin:0")
+    .row(style="padding:10px;background: rgba(0,0,0,0.8); margin:0; height:50vh; overflow-y:scroll")
       .video.col-sm-2
         %img(src="http://image.tmdb.org/t/p/w154#{@movie.poster_path}" title="#{@movie.title}")
         
-      %div(style="padding-top: 20px; color:black")
+      %div(style="padding-top: 20px; color:white")
         %h2.movie_title
           %span= @movie.title
           .actions(style="margin-left:10px")
@@ -21,9 +21,16 @@
         %hr(style="margin-top:5px")
         %p(style="line-height:1.5em")= @movie.overview
 
-    .row(style="padding:10px;background: rgba(225,225,225, 0.5); margin:0")
-      %div
-        
+    .row.cast-info
+      - @cast.each do |cast|
+        .col-md-3.col-sm-2
+          .row(style="margin:0; padding:0")
+            .col-md-4
+              %img(src="http://image.tmdb.org/t/p/w154#{cast.profile_path}" style="border-radius:50px; width: 100px; height: 100px")
+            .col-md-8
+              %p= cast.name
+            
+
     .row
       %div
 
