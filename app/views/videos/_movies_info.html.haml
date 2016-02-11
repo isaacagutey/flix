@@ -11,13 +11,17 @@
         
       %div(style="padding-top: 20px; color:white")
         %h2.movie_title
-          %span= @movie.title
+          %span= "#{@movie.title + " (" + movie_year(@movie.release_date) + ")" }"
+          .genres
+            - @movie.genres.each do |genre|
+              %span.badge(style="margin: 5px; font-size:1em; background-color: rgba(225,225,225,0.1); ")
+                =link_to genre.name, genre_show_video_path(genre.id, genre: genre.name)
           .actions(style="margin-left:10px")
             %span.favourite_button
-              = link_to " + favourites", add_favourite_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-primary" if !current_user.favourited_video?(@movie.id)
+              = link_to " + favourites", add_favourite_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-primary action-btn" if !current_user.favourited_video?(@movie.id)
 
             %span.queue_button
-              = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger" if !current_user.queued_video?(@movie.id)
+              = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger action-btn" if !current_user.queued_video?(@movie.id)
         %hr(style="margin-top:5px")
         %p(style="line-height:1.5em")= @movie.overview
     
