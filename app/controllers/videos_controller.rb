@@ -120,7 +120,7 @@ private
   end
 
   def set_movie_details 
-    @cast = Tmdb::Movie.cast(params[:id])
+    @cast = Tmdb::Movie.cast(params[:id]).select{ |cast| cast.profile_path.present? }
     @crew = Tmdb::Movie.crew(params[:id])
     @director =Tmdb::Movie.director(params[:id])
     @trailer1 = Tmdb::Movie.videos(params[:id]).first.key  if Tmdb::Movie.videos(params[:id]).present?

@@ -6,7 +6,7 @@
   .row
     .owl-carousel.video-index
       - @fantasy.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -22,7 +22,7 @@
   .row
     .owl-carousel.video-index
       - @animations.each do |video|
-        = link_to video_path(video.id), remote: :true do
+        = link_to video_path(video.id) do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -38,7 +38,7 @@
   .row
     .owl-carousel.video-index
       - @action.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -54,7 +54,7 @@
   .row
     .owl-carousel.video-index
       - @adventure.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -70,7 +70,7 @@
   .row
     .owl-carousel.video-index
       - @comedy.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -86,7 +86,7 @@
   .row
     .owl-carousel.video-index
       - @crime.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -102,7 +102,7 @@
   .row
     .owl-carousel.video-index
       - @documentary.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -118,7 +118,7 @@
   .row
     .owl-carousel.video-index
       - @foreign.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -134,7 +134,7 @@
   .row
     .owl-carousel.video-index
       - @history.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -150,7 +150,7 @@
   .row
     .owl-carousel.video-index
       - @horror.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -166,7 +166,7 @@
   .row
     .owl-carousel.video-index
       - @music.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -182,7 +182,7 @@
   .row
     .owl-carousel.video-index
       - @mystery.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -198,7 +198,7 @@
   .row
     .owl-carousel.video-index
       - @romance.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -214,7 +214,7 @@
   .row
     .owl-carousel.video-index
       - @science_fiction.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -230,7 +230,7 @@
   .row
     .owl-carousel.video-index
       - @tv_movie.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -246,7 +246,7 @@
   .row
     .owl-carousel.video-index
       - @thriller.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -262,7 +262,7 @@
   .row
     .owl-carousel.video-index
       - @war.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -278,7 +278,7 @@
   .row
     .owl-carousel.video-index
       - @western.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -293,7 +293,7 @@
   .row
     .owl-carousel.video-index
       - @drama.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
@@ -308,7 +308,7 @@
   .row
     .owl-carousel.video-index
       - @family.each do |video|
-        = link_to video_path(video.id), remote: :true, method: :get  do
+        = link_to video_path(video.id), method: :get  do
           .item
             .video.col-sm-2.trigger
               %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")

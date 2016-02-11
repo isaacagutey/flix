@@ -24,7 +24,7 @@
 .dialog__overlay {
 	position: absolute;
 	z-index: 1;
-	background: #E1E1E1;
+	background: rgba(69,72,77,1);
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
