@@ -1,11 +1,11 @@
-.movie-info-container(style="display:block")
-  .movies_info(style="padding: 0; margin:0; height:100vh")
+.movie-info-container(style="display:block;")
+  .movies_info(style="padding: 0; margin:0; height:100vh;")
     .owl-carousel.video-info(style="overflow:hidden")
       - @backdrops.each do |backdrop|
         .item
           %img(src="http://image.tmdb.org/t/p/w780#{backdrop}" style="width:101%; height:100vh; background-size:cover")
-  .movie-details(style="position:absolute; width:100%; height: 100vh; margin-top:-100vh")
-    .row(style="padding:10px;background: rgba(0,0,0,0.8); margin:0; height:50vh; overflow-y:scroll")
+  .movie-details
+    .row(style="padding:10px;background: rgba(0,0,0,0.8); margin:0")
       .video.col-sm-2
         %img(src="http://image.tmdb.org/t/p/w154#{@movie.poster_path}" title="#{@movie.title}")
         
@@ -22,17 +22,22 @@
         %p(style="line-height:1.5em")= @movie.overview
 
     .row.cast-info
+      %p Full Cast
+      %hr
       - @cast.each do |cast|
-        .col-md-3.col-sm-2
-          .row(style="margin:0; padding:0")
-            .col-md-4
-              %img(src="http://image.tmdb.org/t/p/w154#{cast.profile_path}" style="border-radius:50px; width: 100px; height: 100px")
-            .col-md-8
-              %p= cast.name
-            
-
-    .row
-      %div
+        - if cast.profile_path.present?
+          .col-xs-12.col-sm-4.col-md-3.col-lg-3
+            .row(style="margin:0; padding:0")
+              %table(style="margin:10px 0px 10px 0px")
+                %tbody
+                  %tr
+                    %td
+                      %img(src="http://image.tmdb.org/t/p/w154#{cast.profile_path}" class="cast-image")
+                    %td(style="padding-left:10px; text-align:center")
+                      .z_x_y(style="position:absolute; padding-top:10px")
+                        %p= cast.name
+                        %span(style="color:white") as
+                        %p= cast.character                    
 
 :javascript
   $(document).ready(function(){

@@ -1,6 +1,6 @@
 .video_show_sub_links
   %ul.nav.nav-tabs
-    - if params[:tab] == "reviews" || params[:tab] == nil
-      %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie, tab: 'reviews')
-    - else
-      %li= link_to "Reviews(#{@reviews.size})", video_path(@movie, tab: 'reviews')
+    %li= link_to "Info", video_path(@movie.id, tab:"info") 
+
+    %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
+    

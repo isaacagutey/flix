@@ -40,29 +40,6 @@ module ApplicationHelper
     number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
-  def all_genres
-    @animation = 16
-    @action = 28
-    @adventure = 12
-    @comedy = 35
-    @crime = 80
-    @documentary = 99
-    @foreign = 10769
-    @history = 36
-    @horror = 27
-    @music = 10402
-    @mystery = 9648
-    @romance = 10749
-    @science_fiction = 878
-    @tv_movie = 10770
-    @thriller = 53
-    @war = 10752
-    @western = 37
-    @drama = 18
-    @family = 10751
-    @fantasy = 14
-  end
-
   def cast(movie_id)
     Tmdb::Movie.cast(movie_id) 
   end

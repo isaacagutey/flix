@@ -48,9 +48,9 @@
 
 
     - if params[:tab] == "reviews" 
-      %li.active= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
+      %li.active= link_to "Reviews", video_path(@movie.id, tab: 'reviews')
     - else
-      %li= link_to "Reviews(#{@reviews.size})", video_path(@movie.id, tab: 'reviews')
+      %li= link_to "Reviews", video_path(@movie.id, tab: 'reviews')
 
 
 

@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
     @four_star = (( rating_array.count(4).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(4).to_f / rating_array.size ).to_f * 100).round(2)
     @five_star = (( rating_array.count(5).to_f / rating_array.size ).to_f * 100).round(2).nan? ? 0 : (( rating_array.count(5).to_f / rating_array.size ).to_f * 100).round(2)
   end
+
+  def with_poster(movies)
+    movies.select { |movie| movie.poster_path.present? }
+  end
   
 
   def movie_categories
@@ -43,84 +47,106 @@ class ApplicationController < ActionController::Base
   end
 
   def animation
-    Tmdb::Genre.movies(16, page: @@page)
+    with_poster(Tmdb::Genre.movies(16, page: @@page).results)
   end
 
   def action
-    Tmdb::Genre.movies(28, page: @@page)
+    with_poster(Tmdb::Genre.movies(28, page: @@page).results)
   end
 
   def adventure
-    Tmdb::Genre.movies(12, page: @@page)
+    with_poster(Tmdb::Genre.movies(12, page: @@page).results)
   end
 
   def comedy
-    Tmdb::Genre.movies(35, page: @@page)
+    with_poster(Tmdb::Genre.movies(35, page: @@page).results)
   end
 
   def crime
-    Tmdb::Genre.movies(80, page: @@page)
+    with_poster(Tmdb::Genre.movies(80, page: @@page).results)
   end
 
   def documentary
-    Tmdb::Genre.movies(99, page: @@page)
+    with_poster(Tmdb::Genre.movies(99, page: @@page).results)
   end
 
   def foreign
-    Tmdb::Genre.movies(10769, page: @@page)
+    with_poster(Tmdb::Genre.movies(10769, page: @@page).results)
   end
 
   def history
-    Tmdb::Genre.movies(36, page: @@page)
+    with_poster(Tmdb::Genre.movies(36, page: @@page).results)
   end
 
   def horror
-    Tmdb::Genre.movies(27, page: @@page)
+    with_poster(Tmdb::Genre.movies(27, page: @@page).results)
   end
 
   def music
-    Tmdb::Genre.movies(10402, page: @@page)
+    with_poster(Tmdb::Genre.movies(10402, page: @@page).results)
   end
 
   def mystery
-    Tmdb::Genre.movies(9648, page: @@page)
+    with_poster(Tmdb::Genre.movies(9648, page: @@page).results)
   end
 
   def romance
-    Tmdb::Genre.movies(10749, page: @@page)
+    with_poster(Tmdb::Genre.movies(10749, page: @@page).results)
   end
 
   def science_fiction
-    Tmdb::Genre.movies(878, page: @@page)
+    with_poster(Tmdb::Genre.movies(878, page: @@page).results)
   end
 
   def tv_movie
-    Tmdb::Genre.movies(10770, page: @@page)
+    with_poster(Tmdb::Genre.movies(10770, page: @@page).results)
   end
 
   def thriller
-    Tmdb::Genre.movies(53, page: @@page)
+    with_poster(Tmdb::Genre.movies(53, page: @@page).results)
   end
 
   def war
-    Tmdb::Genre.movies(10752, page: @@page)
+    with_poster(Tmdb::Genre.movies(10752, page: @@page).results)
   end
 
   def western
-    Tmdb::Genre.movies(37, page: @@page)
+    with_poster(Tmdb::Genre.movies(37, page: @@page).results)
   end
 
   def drama
-    Tmdb::Genre.movies(18, page: @@page)
+    with_poster(Tmdb::Genre.movies(18, page: @@page).results)
   end
 
   def family
-    Tmdb::Genre.movies(10751, page: @@page)
+    with_poster(Tmdb::Genre.movies(10751, page: @@page).results)
   end
 
   def fantasy
-    Tmdb::Genre.movies(14, page: @@page)
+    with_poster(Tmdb::Genre.movies(14, page: @@page).results)
   end
 
+  def set_all_genres
+    @animations_id = 16
+    @action_id = 28
+    @adventure_id = 12
+    @comedy_id = 35
+    @crime_id = 80
+    @documentary_id = 99
+    @foreign_id = 10769
+    @history_id = 36
+    @horror_id = 27
+    @music_id = 10402
+    @mystery_id = 9648
+    @romance_id = 10749
+    @science_fiction_id = 878
+    @tv_movie_id = 10770
+    @thriller_id = 53
+    @war_id = 10752
+    @western_id = 37
+    @drama_id = 18
+    @family_id = 10751
+    @fantasy_id = 14
+  end
 
 end

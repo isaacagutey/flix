@@ -5,6 +5,7 @@ class VideosController < ApplicationController
   before_action :set_average_rating, only: [:movie_show_page, :show]
   before_action :require_user, only: [:index, :show, :search]
   before_action :set_similar_movies, only: [:show]
+  before_action :set_all_genres, only: [:index]
  
   def index
     @animations = animation
@@ -59,13 +60,13 @@ class VideosController < ApplicationController
     @id = params[:id]
     if params[:page].present? 
       if params[:page].to_i < pages
-        @genre = Tmdb::Genre.movies("#{params[:id]}", page: params[:page]).results.flatten
+        @genre = Tmdb::Genre.movies("#{params[:id]}", page: params[:page]).results.select{ |movie| movie.poster_path.present? }.flatten
         render 'videos/genre.js'
       else
         # do something
       end
     else
-      @genre = Tmdb::Genre.movies("#{params[:id]}").results.flatten
+      @genre = Tmdb::Genre.movies("#{params[:id]}").results.select{ |movie| movie.poster_path.present? }.flatten
       render 'videos/genre'
     end
  
@@ -130,7 +131,7 @@ private
 
   def set_similar_movies
     genre_id = Tmdb::Movie.detail(params[:id]).genres.first.id
-    @similar_genre_movies = Tmdb::Genre.movies(genre_id).results
+    @similar_genre_movies = with_poster(Tmdb::Genre.movies(genre_id).results)
     # binding.pry
   end
 

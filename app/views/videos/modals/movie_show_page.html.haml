@@ -4,6 +4,7 @@
     = render partial: 'videos/movie_show_page', locals: { movie: @movie, backdrops: @backdrops, cast: @cast, crew: @crew, trailer: @trailer, director: @director, similar: @similar }  
     %div.close-button
       %button.action{"data-dialog-close" => ""}
+    %div(style="height:50px")
 
 :javascript
   $('p.description').scrollbar();
