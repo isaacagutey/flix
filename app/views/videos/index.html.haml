@@ -1,327 +1,370 @@
 = render 'shared/close_button'
 
-/ FANTASY
-.movies-index
-  = link_to 'Fantasy', genre_show_video_path(@fantasy_id, genre: "Fantasy"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @fantasy.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+.errors
+  = render 'shared/errors', object:  @user
 
-    .owl-carousel.video-id-hidden
-      - @fantasy.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}   
+.all_movies_wrapper
+  / FANTASY
+  .movies-index
+    = link_to 'Fantasy', genre_show_video_path(@fantasy_id, genre: "Fantasy"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @fantasy.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-
-/ ANIMATIONS
-.movies-index
-  = link_to 'Animations', genre_show_video_path(@animations_id, genre: "Animations"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @animations.each do |video|
-        = link_to video_path(video.id) do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @animations.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @fantasy.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}   
 
 
-/ ACTION
-.movies-index
-  = link_to 'Action', genre_show_video_path(@action_id, genre: "Action"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @action.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / ANIMATIONS
+  .movies-index
+    = link_to 'Animations', genre_show_video_path(@animations_id, genre: "Animations"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @animations.each do |video|
+          = link_to video_path(video.id) do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @action.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ ADVENTURE
-.movies-index
-  = link_to 'Adventure', genre_show_video_path(@adventure_id, genre: "Adventure"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @adventure.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @adventure.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @animations.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ COMEDY
-.movies-index
-  = link_to 'Comedy', genre_show_video_path(@adventure_id, genre: "Comedy"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @comedy.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / ACTION
+  .movies-index
+    = link_to 'Action', genre_show_video_path(@action_id, genre: "Action"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @action.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @comedy.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ CRIME
-.movies-index
-  = link_to 'Crime', genre_show_video_path(@crime_id, genre: "Crime"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @crime.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @crime.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @action.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ DOCUMENTARY
-.movies-index
-  = link_to 'Documentary', genre_show_video_path(@documentary_id, genre: "Documentary"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @documentary.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / ADVENTURE
+  .movies-index
+    = link_to 'Adventure', genre_show_video_path(@adventure_id, genre: "Adventure"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @adventure.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @documentary.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ FOREIGN
-.movies-index
-  = link_to 'Foreign', genre_show_video_path(@foreign_id, genre: "Foreign"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @foreign.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @foreign.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @adventure.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ HISTORY
-.movies-index
-  = link_to 'History', genre_show_video_path(@history, genre: "History"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @history.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / COMEDY
+  .movies-index
+    = link_to 'Comedy', genre_show_video_path(@adventure_id, genre: "Comedy"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @comedy.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @history.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ HORROR
-.movies-index
-  = link_to 'Horror', genre_show_video_path(@horror_id, genre: "Horror"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @horror.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @horror.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @comedy.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ MUSIC
-.movies-index
-  = link_to 'Music', genre_show_video_path(@music_id, genre: "Music"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @music.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / CRIME
+  .movies-index
+    = link_to 'Crime', genre_show_video_path(@crime_id, genre: "Crime"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @crime.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @music.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ MYSTERY
-.movies-index
-  = link_to 'Mystery', genre_show_video_path(@mystery_id, genre: "Mystery"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @mystery.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @mystery.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @crime.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ ROMANCE
-.movies-index
-  = link_to 'Romance', genre_show_video_path(@romance_id, genre: "Romance"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @romance.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / DOCUMENTARY
+  .movies-index
+    = link_to 'Documentary', genre_show_video_path(@documentary_id, genre: "Documentary"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @documentary.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @romance.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ SCIENCE FICTION
-.movies-index
-  = link_to 'Science Fiction', genre_show_video_path(@science_fiction_id, genre: "Science Fiction"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @science_fiction.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @science_fiction.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-          
-
-/ TV MOVIE
-.movies-index
-  = link_to 'Tv Movie', genre_show_video_path(@tv_movie_id, genre: "Tv Movie"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @tv_movie.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @tv_movie.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @documentary.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ THRILLER
-.movies-index
-  = link_to 'Thriller', genre_show_video_path(@thriller_id, genre: "Thriller"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @thriller.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / FOREIGN
+  .movies-index
+    = link_to 'Foreign', genre_show_video_path(@foreign_id, genre: "Foreign"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @foreign.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @thriller.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-
-/ WAR
-.movies-index
-  = link_to 'War', genre_show_video_path(@war_id, genre: "War"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @war.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @war.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @foreign.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-/ WESTERN
-.movies-index
-  = link_to 'Western', genre_show_video_path(@western_id, genre: "Western"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @western.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+  / HISTORY
+  .movies-index
+    = link_to 'History', genre_show_video_path(@history, genre: "History"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @history.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
 
-    .owl-carousel.video-id-hidden
-      - @western.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-/ DRAMA
-.movies-index
-  = link_to 'Drama', genre_show_video_path(@drama_id, "Drama"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @drama.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @drama.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
-
-/ FAMILY
-.movies-index
-  = link_to 'Family', genre_show_video_path(@family_id, genre: "Family"), class:"category_link"
-  .row
-    .owl-carousel.video-index
-      - @family.each do |video|
-        = link_to video_path(video.id), method: :get  do
-          .item
-            .video.col-sm-2.trigger
-              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
-
-    .owl-carousel.video-id-hidden
-      - @family.each do |video|
-        %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+      .owl-carousel.video-id-hidden
+        - @history.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
 
 
-= render 'modal_trigger'
+  / HORROR
+  .movies-index
+    = link_to 'Horror', genre_show_video_path(@horror_id, genre: "Horror"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @horror.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @horror.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / MUSIC
+  .movies-index
+    = link_to 'Music', genre_show_video_path(@music_id, genre: "Music"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @music.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @music.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / MYSTERY
+  .movies-index
+    = link_to 'Mystery', genre_show_video_path(@mystery_id, genre: "Mystery"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @mystery.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @mystery.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / ROMANCE
+  .movies-index
+    = link_to 'Romance', genre_show_video_path(@romance_id, genre: "Romance"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @romance.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @romance.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / SCIENCE FICTION
+  .movies-index
+    = link_to 'Science Fiction', genre_show_video_path(@science_fiction_id, genre: "Science Fiction"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @science_fiction.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @science_fiction.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+            
+
+  / TV MOVIE
+  .movies-index
+    = link_to 'Tv Movie', genre_show_video_path(@tv_movie_id, genre: "Tv Movie"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @tv_movie.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @tv_movie.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / THRILLER
+  .movies-index
+    = link_to 'Thriller', genre_show_video_path(@thriller_id, genre: "Thriller"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @thriller.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @thriller.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / WAR
+  .movies-index
+    = link_to 'War', genre_show_video_path(@war_id, genre: "War"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @war.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @war.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+  / WESTERN
+  .movies-index
+    = link_to 'Western', genre_show_video_path(@western_id, genre: "Western"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @western.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @western.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+  / DRAMA
+  .movies-index
+    = link_to 'Drama', genre_show_video_path(@drama_id, "Drama"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @drama.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @drama.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+  / FAMILY
+  .movies-index
+    = link_to 'Family', genre_show_video_path(@family_id, genre: "Family"), class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @family.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @family.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}
+
+
+
+= render 'videos/modal_trigger'
 
 #movie_show_details
 
 #category_show_page
 
+#login_signup_modal
+
+.md-modal.md-effect-18#modal-18
+  .md-content
+    .sign_up
+      .row
+        .col-md-12.signup-form
+          .md-close(style="position:absolute; cursor: pointer; right:20px; font-size: 1.5em; color: rgba(225,225,225,0.5") &#215;
+          .mobile_sign_up.display_none
+            %h1 Sign Up
+            = render "users/form"
+          .mobile_login
+            %h1 Sign In
+            = bootstrap_form_tag url: '/sign_in', method: 'POST' do |f| 
+              = f.email_field :email, class: "email", required: :true 
+              = f.password_field :password, class: "password", required: :true
+              = f.submit 'login', class:"btn btn-default login"
+            %br
+            %p
+              %a Not a member? Sign up.  
+      
+        
+
+.md-overlay
+  = render 'videos/overlay_background'
+
+
 = render 'shared/analytics'
+
+:javascript
+  $('.mobile_login p a').on('click', function(event) {
+    $('.mobile_login').addClass('display_none');
+    $('.mobile_sign_up').removeClass('display_none')
+  });
+
+  $('.mobile_sign_up p a').on('click', function(){
+    $('.mobile_sign_up').addClass('display_none')
+    $('.mobile_login').removeClass('display_none')
+  });

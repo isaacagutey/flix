@@ -7,6 +7,15 @@ section.site_title
     font-size: 24px
     margin-bottom: 30px
 
+input#email.form-control.email, input#password.form-control.password
+  margin-right: 10px
+  border: 1px solid rgba(225,225,225,0.5)
+  background: transparent
+  color: white
+
+label.control-label
+  padding-bottom: 5px
+
 .sign_in
   z-index: 999
   .row
@@ -15,47 +24,44 @@ section.site_title
     .form-inline
       position: absolute
       right: 10px
-    input#email.form-control.email, input#password.form-control.password
-      margin-right: 10px
-      border: 1px solid #B9090B
-      -webkit-box-shadow: inset 0px 0px 4px 0px rgba(185,9,11,1)
-      -moz-box-shadow: inset 0px 0px 4px 0px rgba(185,9,11,1)
-      box-shadow: inset 0px 0px 4px 0px rgba(185,9,11,1)
     label.control-label
       padding-right: 5px
       padding-left: 10px
-      color: #B9090B
+      color: white
 input.btn.btn-default.login
-  border: 1px solid #B9090B
+  border: none
+  background: #c0392b
+  color: white
   &:hover
-    background: #B9090B
+    background: #c0392b
     color: white
   
 // Mozila keyframe animation
 @-moz-keyframes pulse
   0%
-    box-shadow: 0px 0px 9px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 9px 1px rgba(225,225,225,0.5)
   50%
-    box-shadow: 0px 0px 1px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 1px 1px rgba(225,225,225,0.5)
   100%
-    box-shadow: 0px 0px 9px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 9px 1px rgba(225,225,225,0.5)
 /* Webkit keyframe animation */
 @-webkit-keyframes pulse
   0%
-    box-shadow: 0px 0px 9px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 9px 1px rgba(225,225,225,0.5)
   50%
-    box-shadow: 0px 0px 1px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 1px 1px rgba(225,225,225,0.5)
   100%
-    box-shadow: 0px 0px 9px 1px rgba(185,9,11,1)
+    box-shadow: 0px 0px 9px 1px rgba(225,225,225,0.5)
 .sign_up
   margin-top: 40px
   @media screen and (max-width: 500px)
   margin-top: 65px
   z-index: 999
   .row  
-    margin: 0  
-    .col-md-4.col-md-offset-7.signup-form
-      background: rgba(255,255,255,0.6)
+    margin: 0 auto  
+    max-width: 400px
+    .col-md-12.signup-form
+      background: rgba(0,0,0,0.6)
       border-radius: 5px
       min-height: 400px 
       max-width: 400px
@@ -80,7 +86,7 @@ input.btn.btn-default.login
       @media screen and (max-width: 991px)
         margin: 0 auto
       h1
-        color: #B9090B
+        color: white
         font-size: 2.5em
         text-align: center
         font-weight: bold
@@ -88,20 +94,20 @@ input.btn.btn-default.login
       // .mobile_sign_up
       //   display: none
       .mobile_sign_up.display_none
-        @media screen and (max-width: 991px)
-          display: none
+        display: none
       // someting goes here
+      .mobile_login.display_none
+        display: none
       form
         margin: 0 auto
         width: 250px
       label.control-label.required
-        color: #B9090B
+        color: rgba(225,225,225,0.9)
       p
-        text-align: center
+        text-align: center 
         a
-          @media screen and (min-width: 991px)
-            display: none
-          // text-align: 
+          color: white
+          cursor: pointer
       .mobile_login.hidden-md.hidden-lg.display_none
         display: none
       .mobile_login.hidden-md.hidden-lg
@@ -111,25 +117,44 @@ input.btn.btn-default.login
           font-size: 2.5em
         input#email.form-control.email, input#password.form-control.password
           width: 250px
-          border: 1px solid #B9090B
+          border: 1px solid rgba(225,225,225,0.5)
+          background: transparent
+          color: white
         label.control-label
-          color: #B9090B
+          color: white
         p
           text-align: center
           margin: 0 auto
           pointer: cursor
           a
-            // pointer: none
+            pointer: none
+            color: white
 
     input#user_email.form-control,input#user_password.form-control,input#user_full_name.form-control
       max-width: 250px
-      border: 1px solid #B9090B
+      border: 1px solid rgba(225,225,225,0.5)
+      background: transparent
+      color: white
     input.btn.btn-default.signup
-      border: 1px solid #B9090B
+      border: none
+      background: #c0392b
+      color: white
       &:hover
-        background: #B9090B
+        background: #c0392b
         color: white
     label.control-label.col-sm-3.required
-      color: #B9090B
+      color: white
+
+button.login_button
+  margin-right: 15px
+  background: transparent
+  text-transform: capitalize
+  &:hover
+    // border: 1px solid white
+    /* Configure a keyframe animation for Firefox */
+    -moz-animation: pulse 2s infinite
+
+    /* Configure it for Chrome and Safari */
+    -webkit-animation: pulse 2s infinite
 
 

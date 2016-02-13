@@ -1,0 +1,14 @@
+- if logged_in?
+  .actions(style="margin-left:10px")
+    %span.favourite_button
+      = link_to " + favourites", add_favourite_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-primary action-btn" if !current_user.favourited_video?(@movie.id)
+
+    %span.queue_button
+      = link_to " +  queue", add_queue_item_path(video_id: @movie.id), method: "post", remote: true, class: "btn btn-danger action-btn" if !current_user.queued_video?(@movie.id)
+- else
+  .actions(style="margin-left:10px")
+    %span.favourite_button
+      = link_to " + favourites", sign_in_path, remote: true, class: "btn btn-primary action-btn"
+
+    %span.queue_button
+      = link_to " +  queue", sign_in_path, remote: true, class: "btn btn-danger action-btn"

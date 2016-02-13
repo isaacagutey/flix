@@ -1,0 +1,61 @@
+/ FANTASY
+.movies-index
+  = link_to 'Fantasy', genre_show_video_path(@fantasy_id, genre: "Fantasy"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @fantasy.each do |video|
+        = link_to video_path(video.id), method: :get  do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+
+/ ANIMATIONS
+.movies-index
+  = link_to 'Animations', genre_show_video_path(@animations_id, genre: "Animations"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @animations.each do |video|
+        = link_to video_path(video.id) do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+
+/ ACTION
+.movies-index
+  = link_to 'Action', genre_show_video_path(@action_id, genre: "Action"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @action.each do |video|
+        = link_to video_path(video.id), method: :get  do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+
+/ ADVENTURE
+.movies-index
+  = link_to 'Adventure', genre_show_video_path(@adventure_id, genre: "Adventure"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @adventure.each do |video|
+        = link_to video_path(video.id), method: :get  do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+
+/ COMEDY
+.movies-index
+  = link_to 'Comedy', genre_show_video_path(@adventure_id, genre: "Comedy"), class:"category_link"
+  .row
+    .owl-carousel.video-index
+      - @comedy.each do |video|
+        = link_to video_path(video.id), method: :get  do
+          .item
+            .video.col-sm-2.trigger
+              %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+
+.modal_back_cover(style="width: 100%; height: 120%; background-color: rgba(0,0,0,0.7); position: absolute; top: 0 ")

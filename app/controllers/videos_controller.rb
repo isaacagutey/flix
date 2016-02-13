@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   before_action :set_movie_details, only: [:show]
   before_action :get_backdrops, only: [:show, :movie_show_page]
   before_action :set_average_rating, only: [:movie_show_page, :show]
-  before_action :require_user, only: [:index, :show, :search]
+  # before_action :require_user, only: [:index, :show, :search]
   before_action :set_similar_movies, only: [:show]
   before_action :set_all_genres, only: [:index]
  
@@ -90,7 +90,7 @@ class VideosController < ApplicationController
     @collection = Tmdb::Search.collection(params[:q]).results
     @keyword = Tmdb::Search.keyword(params[:q]).results
     @list = Tmdb::Search.list(params[:q]).results
-    @movie = Tmdb::Search.movie(params[:q]).results
+    @movie = with_poster(Tmdb::Search.movie(params[:q]).results)
     @multi = Tmdb::Search.multi(params[:q]).results
     @person = Tmdb::Search.person(params[:q]).results
     @tv = Tmdb::Search.tv(params[:q]).results

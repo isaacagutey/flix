@@ -1,6 +1,7 @@
 %header.cd-main-header
-  %a.cd-nav-trigger{:href => "#0"}
-    %span
+  - if logged_in?
+    %a.cd-nav-trigger{:href => "#0"}
+      %span
   = link_to home_path, class:"cd-logo" do
     = image_tag "home.svg", alt:"Logo", height:"50", width:"50"
        
@@ -9,17 +10,23 @@
       %input(id="q" name="q" type="text" placeholder="Search...")
       = submit_tag("Search", class:"search_submit")
       .c-ripple__circle
-
-  %nav.cd-nav
-    %ul.cd-top-nav
-      %li.has-children
-        %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40" class="profile-picture")
-        %ul.dropdown-menu.user-menu(role="menu" aria-labelledby="dlabel")
-          %li
-            %a(href="#") Account
-            = link_to 'Profile', user_path(current_user)
-            = link_to 'Sign Out', sign_out_path
+  
+  - if logged_in?
+    %nav.cd-nav
+      %ul.cd-top-nav
+        %li.has-children
+          %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
+            %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email.downcase)}?s=40" class="profile-picture")
+          %ul.dropdown-menu.user-menu(role="menu" aria-labelledby="dlabel")
+            %li
+              %a(href="#") Account
+              = link_to 'Profile', user_path(current_user)
+              = link_to 'Sign Out', sign_out_path
+  - else
+    %nav.cd-nav
+      %button.md-trigger.md-setperspective.login_button(style="margin-right:15px" data-modal="modal-18") Login/Signup
+      / %p= link_to "Login", sign_in_path, remote: true 
+      / %p= link_to "Signup", register_path, remote: true
   
 
 :javascript

@@ -1,7 +1,7 @@
 :javascript 
   jQuery(document).ready(function(){  
     var dlg;
-    $('.movie_page_trigger').on('click', function() {
+    $('.movie_page_trigger, #login_signup').on('click', function() {
       var id = $(this).attr('data-dialog')
       dlg = new DialogFx($("#" +id + "").get(0));
       dlg.toggle();

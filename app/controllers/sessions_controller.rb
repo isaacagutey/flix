@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   before_action :redirect_back, only: [:new]
 
   def new
+    respond_to do |format|
+      format.html
+      format.js { render "pages/login_signup_modal.js" }
+    end
   end
 
   def create
@@ -15,7 +19,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:error] = "Invalid email or password"
-      render "pages/front_page"
+      redirect_to :back
     end
   end
 

@@ -9,32 +9,39 @@
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css", media: 'all'
     = javascript_include_tag "application"
   - if logged_in?
-    %body  
-      = render 'shared/messages'
-      = render 'shared/header'
-      %main.cd-main-content.is-fixed
-        %section.cd-gallery
-          = yield
-        .cd-filter
-          = render 'shared/sidebar'
-      %hr(style="margin-top:0")
-      %h3.footer_text &copy 2016 plsma
-  - else
-    %body.front_page
-      %section.content.clearfix
+    %body(style="overflow:hidden")
+      .main-html(style="height:100vh")  
         = render 'shared/messages'
-        = yield
-      %hr(style="margin-top:0")
-      %h3.footer_text &copy 2016 plsma
+        = render 'shared/header'
+        %main.cd-main-content.is-fixed
+          %section.cd-gallery
+            = yield
+          .cd-filter
+            = render 'shared/sidebar'
+        %h3.footer_text &copy 2016 plsma
+  - else
+    %body.front_page(style="overflow-y: hidden")
+      .main-html(style="height:100vh")
+        %main.cd-main-content.is-fixed
+          = render 'shared/messages'
+          .zero_opacity
+            = render 'shared/header'
+          = yield
+        %h3.footer_text.zero_opacity &copy 2016 plsma
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   / = javascript_include_tag 'jquery.mousewheel.min', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'modalEffects.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  = javascript_include_tag 'cssParser.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
+  :javascript
+     var polyfilter_scriptpath = "/js/css-filters-polyfill/";
+  = javascript_include_tag 'css-filters-polyfill.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'dialogFx', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.10/jquery.scrollbar.min.js', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'filter_main', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
   = javascript_include_tag 'owl.carousel.min', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => true 
 
-  :javascript
+  :javascript 
     $('div.alert.alert-danger.fade.in, ul.alert.alert-danger, div.alert.alert-info.fade.in').delay(5000).fadeOut(300);
    
     $(document).ready(function(){   
@@ -59,6 +66,7 @@
         nav: false,
       });
       $(".movie-details").scrollbar();
+      $(".main-html").scrollbar();
       $(".owl-carousel.video-show").owlCarousel({
         items : 1, //10 items above 1000px browser width
         itemsDesktop : [1000,1], //5 items between 1000px and 901px
