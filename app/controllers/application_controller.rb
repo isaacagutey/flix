@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
     Tmdb::Genre.movie_list.map(&:name)
   end
 
+  def now_playing
+    with_poster((Tmdb::Movie.now_playing).results)
+  end
+
   def animation
     with_poster(Tmdb::Genre.movies(16, page: @@page).results)
   end

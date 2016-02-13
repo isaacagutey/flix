@@ -6,6 +6,20 @@
 .all_movies_wrapper
   / FANTASY
   .movies-index
+    = link_to 'Now Playing', nil, class:"category_link"
+    .row
+      .owl-carousel.video-index
+        - @now_playing.each do |video|
+          = link_to video_path(video.id), method: :get  do
+            .item
+              .video.col-sm-2.trigger
+                %img(src="http://image.tmdb.org/t/p/w154#{video.poster_path}" title="#{video.title}")
+
+      .owl-carousel.video-id-hidden
+        - @now_playing.each do |video|
+          %span.movie_page_trigger{"data-dialog" => "movie_show_details", :id => "movie_#{video.id}"}   
+  / FANTASY
+  .movies-index
     = link_to 'Fantasy', genre_show_video_path(@fantasy_id, genre: "Fantasy"), class:"category_link"
     .row
       .owl-carousel.video-index

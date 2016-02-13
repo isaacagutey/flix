@@ -8,6 +8,7 @@ class VideosController < ApplicationController
   before_action :set_all_genres, only: [:index]
  
   def index
+    @now_playing = now_playing
     @animations = animation
     @action = action
     @adventure = adventure
