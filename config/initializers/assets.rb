@@ -13,4 +13,7 @@ Rails.application.config.assets.precompile += [
 'dialogFx.js',
 'filter_main.js',
 'owl.carousel.min.js',
+'modalEffects.js',
+'cssParser.js',
+'css-filters-polyfill.js',
 ]
